@@ -1,0 +1,25 @@
+{
+  "exported_utc": "2026-10-07T03:13:50.740942+00:00",
+  "name": "HollowPines",
+  "project_id": "649C45488EAE47F5BE9FE38E0D570C7E",
+  "project": "src/HollowPines.uproject",
+  "startup_map": "/Game/Maps/L_TraversalGym",
+  "native_modules": [
+    "LyraGame",
+    "LyraEditor"
+  ],
+  "file_count": 13703,
+  "bytes": 8368384271,
+  "excluded": [
+    ".git",
+    ".vs",
+    "Binaries",
+    "DerivedDataCache",
+    "Intermediate",
+    "Saved",
+    "__pycache__",
+    "bin",
+    "obj"
+  ],
+  "independent_files": true
+}

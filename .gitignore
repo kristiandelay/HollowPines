@@ -1,0 +1,44 @@
+# Unreal-generated output (including plugins)
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+/Artifacts/
+/src/LocalBuilds/
+/src/Packaged*/
+
+# IDE and build-tool output
+.vs/
+.idea/
+.vscode/
+*.sln
+*.slnx
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.csproj.user
+*.code-workspace
+/src/Build/Scripts/bin/
+/src/Build/Scripts/obj/
+
+# Python caches and local files
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.bak
+*.blend1
+*.blend2
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
