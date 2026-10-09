@@ -42,6 +42,9 @@ for record in json.loads((ROOT/'resources/CharacterSources.json').read_text())['
         textures[kind] = texture
     material_path = destination+'/M_'+name
     material = u.load_asset(material_path) if lib.does_asset_exist(material_path) else tools.create_asset('M_'+name,destination,u.Material,u.MaterialFactoryNew())
+    # Headless imports do not trigger the renderer's automatic usage detection.
+    # Persist this before compiling so skeletal meshes never use the fallback material.
+    material.set_editor_property('used_with_skeletal_mesh', True)
     u.MaterialEditingLibrary.delete_all_material_expressions(material)
     for i,(kind,prop) in enumerate([('BaseColor',u.MaterialProperty.MP_BASE_COLOR),('Normal',u.MaterialProperty.MP_NORMAL),('Metallic',u.MaterialProperty.MP_METALLIC),('Roughness',u.MaterialProperty.MP_ROUGHNESS)]):
         expression = u.MaterialEditingLibrary.create_material_expression(material,u.MaterialExpressionTextureSample,-400,i*220)
@@ -50,6 +53,7 @@ for record in json.loads((ROOT/'resources/CharacterSources.json').read_text())['
         elif kind != 'BaseColor': expression.sampler_type = u.MaterialSamplerType.SAMPLERTYPE_MASKS
         assert u.MaterialEditingLibrary.connect_material_property(expression,'RGB' if kind in ['BaseColor','Normal'] else 'R',prop)
     u.MaterialEditingLibrary.recompile_material(material)
+    assert u.MaterialEditingLibrary.has_material_usage(material,u.MaterialUsage.MATUSAGE_SKELETAL_MESH)
     save(material)
     options = u.FbxImportUI()
     for key,value in {'import_mesh':True,'import_as_skeletal':True,

@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "error": null,
+  "characters": [
+    {
+      "name": "MayaCross",
+      "material": "/Game/HollowPines/Players/MayaCross/M_MayaCross.M_MayaCross",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/MayaCross.png",
+      "capture_sha256": "76e8e00b5714161e87fd7c5d369a5a6307956aee8a28daed0520b72f193dbeff"
+    },
+    {
+      "name": "MudboundSurvivor",
+      "material": "/Game/HollowPines/Players/MudboundSurvivor/M_MudboundSurvivor.M_MudboundSurvivor",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/MudboundSurvivor.png",
+      "capture_sha256": "39f7245118f1927a68313c47889625553c15e98e5997c0e74247ec41fb37f2e9"
+    },
+    {
+      "name": "WastelandHero",
+      "material": "/Game/HollowPines/Players/WastelandHero/M_WastelandHero.M_WastelandHero",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/WastelandHero.png",
+      "capture_sha256": "bb13a656f235a05776f5d9aa4840dee061e225ff6c017cb253692c79759f8ff0"
+    },
+    {
+      "name": "WastelandSentinel",
+      "material": "/Game/HollowPines/Players/WastelandSentinel/M_WastelandSentinel.M_WastelandSentinel",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/WastelandSentinel.png",
+      "capture_sha256": "4446b6782664a0fe9682dd85fcabf728a1b966405b63afd9364043fb58be2ed2"
+    },
+    {
+      "name": "WastelandVanguard",
+      "material": "/Game/HollowPines/Players/WastelandVanguard/M_WastelandVanguard.M_WastelandVanguard",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/WastelandVanguard.png",
+      "capture_sha256": "084dd65fd3901109420f8fd2f33ee0e015449517b95b61a9874ceb09a496c0cc"
+    },
+    {
+      "name": "CaveStalker",
+      "material": "/Game/HollowPines/Monsters/CaveStalker/M_CaveStalker.M_CaveStalker",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/CaveStalker.png",
+      "capture_sha256": "b92990c5e2d1b4178bcd4c7576b76e90bc46e99860649df17d6bba458a4c4aab"
+    },
+    {
+      "name": "HollowStalker",
+      "material": "/Game/HollowPines/Monsters/HollowStalker/M_HollowStalker.M_HollowStalker",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/HollowStalker.png",
+      "capture_sha256": "44317cac8d7544f4ea5f0b5e26bd18d4f478d47afbe7a0e228456495f4a2f3f4"
+    },
+    {
+      "name": "HollowRootRevenant",
+      "material": "/Game/HollowPines/Monsters/HollowRootRevenant/M_HollowRootRevenant.M_HollowRootRevenant",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/HollowRootRevenant.png",
+      "capture_sha256": "8b73156a500731427548c4fc3f087849e2b34030ab65a711b9a2e02f24a0a37a"
+    },
+    {
+      "name": "Hag",
+      "material": "/Game/HollowPines/Monsters/Hag/M_Hag.M_Hag",
+      "skeletal_usage": true,
+      "texture_samples": 4,
+      "pixel_instructions": 207,
+      "capture": "Artifacts/CharacterMaterials/Hag.png",
+      "capture_sha256": "d4615ee63e2c5c3d8c4ffed61cdaeb84219b052b4b09fef8548ac79b9fbe2eff"
+    }
+  ],
+  "rendering": "Unreal Engine 5.8 PIE with GPU rendering"
+}

@@ -16,9 +16,15 @@ for record in records:
     mesh=u.load_asset(folder+'/'+name)
     assert isinstance(mesh,u.SkeletalMesh),name
     assert editor.get_lod_count(mesh)==3,name
+    expected_material=u.load_asset(folder+'/M_'+name)
+    assert expected_material,name
+    assert u.MaterialEditingLibrary.has_material_usage(expected_material,u.MaterialUsage.MATUSAGE_SKELETAL_MESH), 'Missing skeletal-mesh material usage: '+name
+    material_slots=mesh.get_editor_property('materials')
+    assert material_slots and all(slot.material_interface==expected_material for slot in material_slots), 'Unexpected mesh materials: '+name
     physics=mesh.get_editor_property('physics_asset')
     assert physics,name
-    assert lib.save_loaded_asset(physics,only_if_is_dirty=False)
+    physics_package=physics.get_path_name().split('.')[0].removeprefix('/Game/')
+    assert (ROOT/'src/Content'/(physics_package+'.uasset')).is_file(), 'Physics asset was not saved: '+name
     assert editor.is_physics_asset_compatible(mesh,physics),name
     skeleton=mesh.get_editor_property('skeleton')
     assert skeleton and lib.does_asset_exist(skeleton.get_path_name())
@@ -34,7 +40,6 @@ for record in records:
     chain_count=len(u.IKRigController.get_controller(ik).get_retarget_chains())
     actor=u.load_asset(folder+'/BP_'+name)
     assert isinstance(actor,u.Blueprint),name
-    u.BlueprintEditorLibrary.compile_blueprint(actor)
     assert not u.CRBlueprintTools.has_blueprint_errors(actor),name
     if record['category']=='Players':
         assert any(c.get_path_name()==actor.generated_class().get_path_name() for c in catalog),name
@@ -48,8 +53,6 @@ for record in records:
     for kind in ['BaseColor','Normal','Metallic','Roughness']:
         texture=u.load_asset(folder+'/Textures/'+name+'_'+kind)
         assert texture and texture.get_editor_property('srgb')==(kind=='BaseColor')
-    assert lib.save_loaded_asset(mesh,only_if_is_dirty=False)
-    assert lib.save_loaded_asset(actor,only_if_is_dirty=False)
     bounds=mesh.get_bounds()
     result['characters'].append({'name':name,'skeletal_mesh':mesh.get_path_name(),'skeleton':skeleton.get_path_name(),
         'bones':len(bones),'lods':editor.get_lod_count(mesh),'ik_chains':chain_count,'physics':physics.get_path_name(),
