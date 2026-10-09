@@ -10,6 +10,8 @@ visual_out = Path(u.Paths.convert_relative_path_to_full(u.Paths.project_dir())).
 visual_out.mkdir(parents=True, exist_ok=True)
 visual_widget = u.get_editor_subsystem(u.EditorUtilitySubsystem).spawn_and_register_tab(u.load_asset('/Game/Widgets/GameAnimationWidget'))
 visual_test = {'phase':'setup', 'index':0, 'angle':0, 'next':0, 'results':[], 'busy':False, 'deadline':time.monotonic()+600}
+visual_test['unique_visuals'] = u.SystemLibrary.get_console_variable_int_value('hp.UniquePlayerVisuals')
+u.SystemLibrary.execute_console_command(None, 'hp.UniquePlayerVisuals 0')
 visual_catalog = u.get_default_object(u.load_asset('/Game/Blueprints/GM_Sandbox').generated_class())
 visual_names = [entry.get_name().removeprefix('BP_').removesuffix('_C') for entry in visual_catalog.get_editor_property('VisualOverrides_Soft')]
 
@@ -33,6 +35,7 @@ def visual_ammo(pawn):
 
 def visual_finish(error=None):
     u.unregister_slate_post_tick_callback(visual_test['handle'])
+    u.SystemLibrary.execute_console_command(None, 'hp.UniquePlayerVisuals '+str(visual_test['unique_visuals']))
     visual_test.update(finished=True,error=error)
     visual_test.pop('capture',None)
     (visual_out/'visual-overrides.json').write_text(json.dumps({'passed':error is None,'error':error,'results':visual_test['results']},indent=2))

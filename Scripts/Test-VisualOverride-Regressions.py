@@ -14,10 +14,13 @@ visual_steps=[
     ('Test-CombatShoulder-Regressions.py','combat_pipeline','CombatTests/combat-regressions.json','VisualOverride/baseline-regressions.json',None,1,-1),
 ]
 visual_pipeline={'phase':'start','index':0,'next':0,'busy':False,'results':[],'deadline':time.monotonic()+1100}
+visual_pipeline['unique_visuals'] = u.SystemLibrary.get_console_variable_int_value('hp.UniquePlayerVisuals')
+u.SystemLibrary.execute_console_command(None, 'hp.UniquePlayerVisuals 0')
 
 
 def vp_finish(error=None):
     u.unregister_slate_post_tick_callback(visual_pipeline['handle'])
+    u.SystemLibrary.execute_console_command(None, 'hp.UniquePlayerVisuals '+str(visual_pipeline['unique_visuals']))
     visual_pipeline.update(finished=True,error=error)
     output=visual_root/'Artifacts/VisualOverride/regressions.json'
     output.write_text(json.dumps({'passed':error is None,'error':error,'results':visual_pipeline['results']},indent=2))

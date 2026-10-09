@@ -18,6 +18,7 @@
 #include "Player/LyraPlayerState.h"
 #include "AbilitySystem/LyraAbilitySystemComponent.h"
 #include "TimerManager.h"
+#include "HollowPines/HollowPinesPlayerState.h"
 
 ACRTraversalCharacter::ACRTraversalCharacter(const FObjectInitializer& ObjectInitializer)
     : Super(ObjectInitializer.SetDefaultSubobjectClass<UBaselineCharacterMovement>(ACharacter::CharacterMovementComponentName))
@@ -102,6 +103,17 @@ void ACRTraversalCharacter::BeginPlay()
     TInlineComponentArray<UCameraComponent*> Cameras(this);
     for (UCameraComponent* Camera : Cameras)
         if (!Camera->IsA<ULyraCameraComponent>()) Camera->Deactivate();
+}
+
+void ACRTraversalCharacter::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+    // The sample manager begins before Lyra possesses its deferred-spawned pawn.
+    // Re-evaluate now that a persistent server PlayerState is available.
+    TInlineComponentArray<UActorComponent*> Components(this);
+    for (auto* Component : Components)
+        if (UFunction* Apply = Component->FindFunction(TEXT("FindAndApplyVisualOverride")))
+            Component->ProcessEvent(Apply, nullptr);
 }
 
 void ACRTraversalCharacter::ToggleSlideCrouch()
@@ -216,6 +228,7 @@ void UCRTraversalCameraMode::UpdateView(float DeltaTime)
 ACRTraversalGameMode::ACRTraversalGameMode(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
     PlayerControllerClass = ABaselinePlayerController::StaticClass();
+    PlayerStateClass = AHollowPinesPlayerState::StaticClass();
     HUDClass = ABaselineHUD::StaticClass();
 }
 

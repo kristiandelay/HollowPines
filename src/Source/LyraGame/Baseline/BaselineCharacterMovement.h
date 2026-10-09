@@ -51,7 +51,15 @@ public:
     bool bWantsToSlide = false;
     // Saved moves restore this alongside CMC's crouch and velocity state.
     void RestorePredictedSlide(bool bSavedSliding) { bSliding = bSavedSliding; }
+    void TrackTraversal(UActorComponent* Logic, class UAnimMontage* Montage, UPrimitiveComponent* Obstacle);
+    void FinishTraversal();
 private:
+    void UpdateTraversalState(float DeltaSeconds);
+    TWeakObjectPtr<UActorComponent> TraversalLogic;
+    TWeakObjectPtr<class UAnimMontage> TraversalMontage;
+    TWeakObjectPtr<UPrimitiveComponent> TraversalObstacle;
+    float TraversalReplicationGrace = 0.f;
+    bool bTraversalFinished = false;
     void SetSliding(bool bNewSliding);
     UFUNCTION() void OnRep_Sliding();
     UPROPERTY(ReplicatedUsing=OnRep_Sliding)

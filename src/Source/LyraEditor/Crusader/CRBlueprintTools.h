@@ -7,6 +7,10 @@ class UCRBlueprintTools : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
 public:
+    UFUNCTION(BlueprintCallable, Category="Hollow Pines|Editor")
+    static bool ConfigureUniquePlayerVisuals(UBlueprint* Manager);
+    UFUNCTION(BlueprintCallable, Category="Hollow Pines|Editor")
+    static bool ConfigureTraversalCleanup(UBlueprint* Traversal);
     UFUNCTION(BlueprintCallable, Category="Baseline|Editor")
     static bool ConfigureVisualOverrideFallback(UBlueprint* Manager, UClass* Catalog);
     UFUNCTION(BlueprintCallable, Category="Baseline|Editor")

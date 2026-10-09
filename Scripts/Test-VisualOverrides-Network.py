@@ -7,6 +7,8 @@ from pathlib import Path
 import unreal as u
 
 visual_net={'phase':'setup','index':0,'next':0,'busy':False,'results':[],'deadline':time.monotonic()+180}
+visual_net['unique_visuals'] = u.SystemLibrary.get_console_variable_int_value('hp.UniquePlayerVisuals')
+u.SystemLibrary.execute_console_command(None, 'hp.UniquePlayerVisuals 0')
 visual_net_out=Path(u.Paths.convert_relative_path_to_full(u.Paths.project_dir())).parent/'Artifacts/VisualOverride/network.json'
 visual_net_widget=u.get_editor_subsystem(u.EditorUtilitySubsystem).spawn_and_register_tab(u.load_asset('/Game/Widgets/GameAnimationWidget'))
 visual_net_names=['Echo','Twinblast','Kellan','Manny','Quinn','UE4_Mannequin']
@@ -35,6 +37,7 @@ def vn_click(index):
 
 def vn_finish(error=None):
     u.unregister_slate_post_tick_callback(visual_net['handle'])
+    u.SystemLibrary.execute_console_command(None, 'hp.UniquePlayerVisuals '+str(visual_net['unique_visuals']))
     visual_net.update(finished=True,error=error)
     visual_net_out.write_text(json.dumps({'passed':error is None,'error':error,'results':visual_net['results']},indent=2))
     print('VISUAL_NETWORK_COMPLETE',error)

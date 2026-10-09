@@ -40,6 +40,114 @@
 #include "K2Node_GetClassDefaults.h"
 #include "K2Node_DynamicCast.h"
 #include "K2Node_VariableSet.h"
+#include "K2Node_Self.h"
+#include "HollowPines/HollowPinesPlayerState.h"
+
+bool UCRBlueprintTools::ConfigureUniquePlayerVisuals(UBlueprint* Manager)
+{
+    if (!Manager) return false;
+    for (UEdGraph* Graph : Manager->FunctionGraphs)
+    {
+        if (Graph->GetFName() != TEXT("FindAndApplyVisualOverride")) continue;
+        UK2Node_CallFunction* Select = nullptr;
+        UK2Node_CallFunction* Owner = nullptr;
+        for (UEdGraphNode* Node : Graph->Nodes)
+        {
+            if (Node->NodeComment == TEXT("Assign distinct player visuals")) return true;
+            if (auto* Call = Cast<UK2Node_CallFunction>(Node))
+            {
+                if (Call->FindPin(TEXT("VisualOverrides"))) Select = Call;
+                if (Call->GetFunctionName() == TEXT("GetOwner")) Owner = Call;
+            }
+        }
+        if (!Select || !Owner || Select->FindPinChecked(TEXT("then"))->LinkedTo.Num() != 1
+            || Select->FindPinChecked(TEXT("ReturnValue"))->LinkedTo.Num() != 1
+            || Select->FindPinChecked(TEXT("VisualOverrides"))->LinkedTo.Num() != 1) return false;
+        auto* Next = Select->FindPinChecked(TEXT("then"))->LinkedTo[0];
+        auto* Asset = Select->FindPinChecked(TEXT("ReturnValue"))->LinkedTo[0];
+        auto* List = Select->FindPinChecked(TEXT("VisualOverrides"))->LinkedTo[0];
+        auto* Resolve = NewObject<UK2Node_CallFunction>(Graph);
+        Resolve->SetFromFunction(UHollowPinesGameplayLibrary::StaticClass()->FindFunctionByName(TEXT("ResolvePlayerVisualOverride")));
+        Graph->AddNode(Resolve, false, false);
+        Resolve->CreateNewGuid(); Resolve->AllocateDefaultPins();
+        Resolve->NodeComment = TEXT("Assign distinct player visuals");
+        Resolve->NodePosX = Select->NodePosX + 350;
+        Resolve->NodePosY = Select->NodePosY;
+        const auto* Schema = Graph->GetSchema();
+        Select->FindPinChecked(TEXT("then"))->BreakAllPinLinks();
+        Asset->BreakAllPinLinks();
+        const bool bLinked = Schema->TryCreateConnection(Select->FindPinChecked(TEXT("then")), Resolve->FindPinChecked(TEXT("execute")))
+            && Schema->TryCreateConnection(Resolve->FindPinChecked(TEXT("then")), Next)
+            && Schema->TryCreateConnection(Resolve->FindPinChecked(TEXT("ReturnValue")), Asset)
+            && Schema->TryCreateConnection(Select->FindPinChecked(TEXT("ReturnValue")), Resolve->FindPinChecked(TEXT("FallbackVisual")))
+            && Schema->TryCreateConnection(Owner->FindPinChecked(TEXT("ReturnValue")), Resolve->FindPinChecked(TEXT("PawnOwner")))
+            && Schema->TryCreateConnection(List, Resolve->FindPinChecked(TEXT("AvailableVisuals")));
+        FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Manager);
+        return bLinked;
+    }
+    return false;
+}
+
+bool UCRBlueprintTools::ConfigureTraversalCleanup(UBlueprint* Traversal)
+{
+    if (!Traversal || Traversal->UbergraphPages.IsEmpty()) return false;
+    UEdGraph* Graph = Traversal->UbergraphPages[0];
+    TMap<FName, UEdGraphNode*> Nodes;
+    for (UEdGraphNode* Node : Graph->Nodes)
+    {
+        if (Node->NodeComment == TEXT("Track traversal until animation exits")) return true;
+        Nodes.Add(Node->GetFName(), Node);
+    }
+    const TCHAR* Required[] = {TEXT("K2Node_CallFunction_6"), TEXT("K2Node_VariableSet_17"),
+        TEXT("K2Node_PlayMontage_0"), TEXT("K2Node_BreakStruct_5"), TEXT("K2Node_IfThenElse_3"),
+        TEXT("K2Node_CallFunction_9"), TEXT("K2Node_DynamicCast_0"), TEXT("K2Node_VariableSet_2")};
+    for (const auto* Name : Required) if (!Nodes.Contains(Name)) return false;
+    auto* Play = Nodes[TEXT("K2Node_PlayMontage_0")];
+    if (Play->FindPinChecked(TEXT("MontageToPlay"))->LinkedTo.Num() != 1) return false;
+    auto* Montage = Play->FindPinChecked(TEXT("MontageToPlay"))->LinkedTo[0];
+    UEdGraphPin* Obstacle = nullptr;
+    for (auto* Pin : Nodes[TEXT("K2Node_BreakStruct_5")]->Pins)
+        if (Pin->PinName.ToString().StartsWith(TEXT("HitComponent_"))) Obstacle = Pin;
+    if (!Obstacle) return false;
+    const auto AddCall = [Graph](const TCHAR* Name)
+    {
+        auto* Call = NewObject<UK2Node_CallFunction>(Graph);
+        Call->SetFromFunction(UHollowPinesGameplayLibrary::StaticClass()->FindFunctionByName(Name));
+        Graph->AddNode(Call, false, false);
+        Call->CreateNewGuid(); Call->AllocateDefaultPins();
+        return Call;
+    };
+    auto* Track = AddCall(TEXT("TrackTraversal"));
+    auto* Finish = AddCall(TEXT("FinishTraversal"));
+    Track->NodeComment = TEXT("Track traversal until animation exits");
+    auto* Self = NewObject<UK2Node_Self>(Graph);
+    Graph->AddNode(Self, false, false); Self->CreateNewGuid(); Self->AllocateDefaultPins();
+    const auto* Schema = Graph->GetSchema();
+    auto* End = Nodes[TEXT("K2Node_VariableSet_17")]->FindPinChecked(TEXT("then"));
+    End->BreakAllPinLinks();
+    bool bLinked = Schema->TryCreateConnection(Nodes[TEXT("K2Node_CallFunction_6")]->FindPinChecked(TEXT("then")), Track->FindPinChecked(TEXT("execute")))
+        && Schema->TryCreateConnection(Self->FindPinChecked(TEXT("self")), Track->FindPinChecked(TEXT("TraversalLogic")))
+        && Schema->TryCreateConnection(Montage, Track->FindPinChecked(TEXT("Montage")))
+        && Schema->TryCreateConnection(Obstacle, Track->FindPinChecked(TEXT("Obstacle")))
+        && Schema->TryCreateConnection(End, Finish->FindPinChecked(TEXT("execute")))
+        && Schema->TryCreateConnection(Self->FindPinChecked(TEXT("self")), Finish->FindPinChecked(TEXT("TraversalLogic")))
+        && Schema->TryCreateConnection(Play->FindPinChecked(TEXT("OnCompleted")), Nodes[TEXT("K2Node_VariableSet_17")]->FindPinChecked(TEXT("execute")));
+
+    // Local input already predicted this montage. Replay only on the server's
+    // remote pawn and simulated observers, never on its owning player again.
+    auto* Local = CastChecked<UK2Node_CallFunction>(Nodes[TEXT("K2Node_CallFunction_9")]);
+    Local->SetFromFunction(APawn::StaticClass()->FindFunctionByName(TEXT("IsLocallyControlled")));
+    Local->ReconstructNode();
+    auto* Gate = Nodes[TEXT("K2Node_IfThenElse_3")];
+    auto* CastPawn = Nodes[TEXT("K2Node_DynamicCast_0")];
+    auto* SetResult = Nodes[TEXT("K2Node_VariableSet_2")];
+    CastPawn->FindPinChecked(TEXT("then"))->BreakAllPinLinks();
+    Gate->FindPinChecked(TEXT("then"))->BreakAllPinLinks();
+    bLinked &= Schema->TryCreateConnection(CastPawn->FindPinChecked(TEXT("then")), Gate->FindPinChecked(TEXT("execute")))
+        && Schema->TryCreateConnection(Gate->FindPinChecked(TEXT("else")), SetResult->FindPinChecked(TEXT("execute")));
+    FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Traversal);
+    return bLinked;
+}
 
 bool UCRBlueprintTools::ConfigureVisualOverrideFallback(UBlueprint* Manager, UClass* Catalog)
 {

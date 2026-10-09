@@ -35,6 +35,7 @@ public:
     UPROPERTY(EditDefaultsOnly, Category="Baseline|Slide") TObjectPtr<UAnimSequence> SlideAnimation;
 protected:
     virtual void BeginPlay() override;
+    virtual void PossessedBy(AController* NewController) override;
     virtual void OnAbilitySystemInitialized() override;
     virtual void OnDeathStarted(AActor* OwningActor) override;
     virtual void OnDeathFinished(AActor* OwningActor) override;

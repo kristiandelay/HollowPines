@@ -1,0 +1,242 @@
+{
+  "passed": true,
+  "tested_utc": "2026-10-09T05:10:39.454628+00:00",
+  "engine": "5.8.3",
+  "platform": "Win64",
+  "environment": "Four-player listen-server PIE, one editor process",
+  "editor_build": "Succeeded",
+  "case_count": 17,
+  "reports": {
+    "team_visuals": {
+      "passed": true,
+      "error": null,
+      "results": [
+        {
+          "case": "four_distinct_survivors_in_all_four_worlds",
+          "views": 16,
+          "roster": {
+            "260": "/Game/HollowPines/Players/MayaCross/BP_MayaCross.BP_MayaCross_C",
+            "261": "/Game/HollowPines/Players/MudboundSurvivor/BP_MudboundSurvivor.BP_MudboundSurvivor_C",
+            "262": "/Game/HollowPines/Players/WastelandHero/BP_WastelandHero.BP_WastelandHero_C",
+            "263": "/Game/HollowPines/Players/WastelandSentinel/BP_WastelandSentinel.BP_WastelandSentinel_C"
+          }
+        },
+        {
+          "case": "global_preview_preserves_team",
+          "views": 16
+        },
+        {
+          "case": "remote_player_death_and_respawn_keeps_character",
+          "views": 16
+        }
+      ]
+    },
+    "joins_and_disconnects": {
+      "passed": true,
+      "error": null,
+      "results": [
+        {
+          "case": "late_fifth_player_gets_unused_survivor",
+          "views": 20
+        },
+        {
+          "case": "sixth_player_gets_distinct_sample_character",
+          "views": 24,
+          "visual": "/Game/Blueprints/RetargetedCharacters/BP_Echo.BP_Echo_C"
+        },
+        {
+          "case": "disconnect_releases_character_without_reshuffling_team",
+          "views": 24
+        }
+      ]
+    },
+    "traversal_and_gravity": {
+      "passed": true,
+      "error": null,
+      "results": [
+        {
+          "case": "climb",
+          "owner": "host",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot",
+          "ledge_exit": [
+            2699.9999999631177,
+            -1649.9992981067792,
+            338.46250546368054
+          ],
+          "z_after_drop": [
+            88.27499836564758,
+            88.27,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "interrupted_climb",
+          "owner": "host",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot",
+          "ledge_exit": [
+            2699.9999999999995,
+            -1770.0,
+            88.27499277840886
+          ],
+          "z_after_drop": [
+            88.27498804837533,
+            88.27,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "mantle",
+          "owner": "host",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Mantle/AM_M_Neutral_Traversal_Catch_Mantle_med_stand.AM_M_Neutral_Traversal_Catch_Mantle_med_stand",
+          "ledge_exit": [
+            4300.000004481042,
+            -849.9985653371111,
+            188.27499339705474
+          ],
+          "z_after_drop": [
+            88.27499572276878,
+            88.27,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "hurdle",
+          "owner": "host",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Hurdle/AM_M_Neutral_Traversal_Catch_Hurdle_med_stand.AM_M_Neutral_Traversal_Catch_Hurdle_med_stand",
+          "ledge_exit": [
+            2940.742179769549,
+            -800.0000002285691,
+            88.2750022409593
+          ],
+          "z_after_drop": [
+            88.27498861373779,
+            88.27,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "vault",
+          "owner": "host",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Vault/AM_M_Neutral_Traversal_Catch_Vault_high.AM_M_Neutral_Traversal_Catch_Vault_high",
+          "ledge_exit": [
+            5055.557455186022,
+            -799.9999981757381,
+            495.56084356497627
+          ],
+          "z_after_drop": [
+            88.27500101106634,
+            88.28,
+            88.28,
+            88.28
+          ]
+        },
+        {
+          "case": "climb",
+          "owner": "client",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot",
+          "ledge_exit": [
+            2700.0000000001937,
+            -1649.9992332799654,
+            338.4624828885861
+          ],
+          "z_after_drop": [
+            88.27499917826138,
+            88.27499917826138,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "interrupted_climb",
+          "owner": "client",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot",
+          "ledge_exit": [
+            2700.0,
+            -1769.569674745026,
+            88.2749911335123
+          ],
+          "z_after_drop": [
+            88.27499982916117,
+            88.27499982916117,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "mantle",
+          "owner": "client",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Mantle/AM_M_Neutral_Traversal_Catch_Mantle_med_stand.AM_M_Neutral_Traversal_Catch_Mantle_med_stand",
+          "ledge_exit": [
+            4300.000004427934,
+            -849.9985656572308,
+            188.27499645919383
+          ],
+          "z_after_drop": [
+            88.27498949414135,
+            88.27498949414135,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "hurdle",
+          "owner": "client",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Hurdle/AM_M_Neutral_Traversal_Catch_Hurdle_med_stand.AM_M_Neutral_Traversal_Catch_Hurdle_med_stand",
+          "ledge_exit": [
+            2940.74187554385,
+            -800.0000001297785,
+            88.27498871964978
+          ],
+          "z_after_drop": [
+            88.27498880992061,
+            88.27498880992061,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "vault",
+          "owner": "client",
+          "views": 4,
+          "montage": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Vault/AM_M_Neutral_Traversal_Catch_Vault_high.AM_M_Neutral_Traversal_Catch_Vault_high",
+          "ledge_exit": [
+            5091.33022920346,
+            -799.9999981925786,
+            463.0971359455462
+          ],
+          "z_after_drop": [
+            88.27499707238792,
+            88.27499707238792,
+            88.27,
+            88.27
+          ]
+        },
+        {
+          "case": "failed_montage_restores_gravity_immediately"
+        }
+      ]
+    }
+  },
+  "sha256": {
+    "src/Source/LyraGame/HollowPines/HollowPinesPlayerState.cpp": "c5d930f1e8022797370ecbb19ba15e143a664dc89d9682ca797070625e7e4703",
+    "src/Source/LyraGame/HollowPines/HollowPinesPlayerState.h": "c4b9d2a1d600831dd7975477b404a2acfeaec5bdb6eeb4c84c8c1b56df0bc06c",
+    "src/Source/LyraGame/Baseline/BaselineCharacterMovement.cpp": "36716d618b5c2b441f2bd4529ef6f80a56b687cce3a3cce9e2d9a3b334b3a4f8",
+    "src/Source/LyraGame/Baseline/BaselineCharacterMovement.h": "5709002d47f859e133c6886e2df8d8c4d11d95a1527aca7c33e0107cf93e9957",
+    "src/Source/LyraGame/Crusader/CRTraversalCharacter.cpp": "95c506e38a966637b309496d81c6cb74a4a9da31f046bced981e6b83e13e1d3d",
+    "src/Content/Blueprints/AC_TraversalLogic.uasset": "216def4881441fc6a12a1fcc71c55ac17b548165231f51b27768d6ddb3753e74",
+    "src/Content/Blueprints/AC_VisualOverrideManager.uasset": "bf5cb26b0cc9dd87088d73612cd02f5a481cad75dd1f346fc8eeeba46d0ce825"
+  }
+}

@@ -35,7 +35,7 @@ Unreal assets and binary art/audio files use Git LFS, as configured in `.gitattr
 - Inventory, rifle/pistol/shotgun pickups, firing, reloading, and combat death/respawn.
 - Aim offsets, shooting while sliding, and shoulder switching with mirrored weapon poses and hand transfer.
 - Physics Control, passive ragdolls, pose-matched recovery, and paired shove/tackle/takedown interactions.
-- Eleven character visual overrides through the Game Animation Widget, including five Hollow Pines survivors.
+- Automatic server-assigned character visuals: teammates receive distinct characters and keep them after respawn.
 - Standalone and two-player PIE validation scripts.
 
 See [BaselineTemplate.txt](docs/BaselineTemplate.txt) for controls and maintenance, and [TraversalSetup.txt](docs/TraversalSetup.txt) for integration details. Original sample documentation and notices remain under `src/`.
@@ -45,6 +45,10 @@ The imported `resources/*Validation.json` files record checks of the original ba
 ## Hollow Pines characters
 
 Maya Cross, Mudbound Survivor, Wasteland Hero, Wasteland Sentinel, and Wasteland Vanguard appear in the Game Animation Widget's visual override list. Their assets are under `/Game/HollowPines/Players`. Auto-Rig Pro fits include both hands and all five fingers, UE5 spine/neck/twist bones, and Manny-to-character IK retargeters. Each character has its own fitted skeleton, preserving the existing Manny skeleton and animations.
+
+The server assigns these five survivors first, then the six sample characters if more players join. Assignments replicate to every client, survive death/respawn, and become available when a player disconnects. The current eleven-model roster supports eleven distinct appearances; larger sessions reuse the least-used characters until more models are added. For manual art previews only, enter `hp.UniquePlayerVisuals 0` in the console before selecting a character in the Game Animation Widget. The default is `1`.
+
+`Scripts/Test-TeamVisuals.py` checks four-player identity replication and combat respawn. `Scripts/Test-ClimbGravity.py` checks completed/interrupted climbs, mantles, hurdles and vaults on the host and client, plus gravity and movement correction after the action ends. Traversal cleanup also handles a failed animation and no longer replays predicted climbs on their owning player.
 
 Cave Stalker, Hollow Stalker, Hollow Root Revenant, and Hag are under `/Game/HollowPines/Monsters`. Each folder includes a custom skeleton, skeletal mesh, materials, an `IK_` chain asset, and a placeable `BP_` preview actor. Cave Stalker uses four limbs plus the source model's central tail appendage; the root creature is 5.5 m tall. The Hag has separate sleeve and robe chains. These are rigged creature assets; creature locomotion, attacks, AI, and cloth simulation still need their gameplay/animation work.
 

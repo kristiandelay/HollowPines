@@ -2,6 +2,11 @@
 #include "BaselinePhysicalInteraction.h"
 #include "GameFramework/Character.h"
 #include "Net/UnrealNetwork.h"
+#include "Animation/AnimInstance.h"
+#include "Animation/AnimMontage.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "UObject/UnrealType.h"
 
 namespace
 {
@@ -87,6 +92,7 @@ void UBaselineCharacterMovement::OnRep_Sliding()
 
 void UBaselineCharacterMovement::UpdateCharacterStateBeforeMovement(float DeltaSeconds)
 {
+    UpdateTraversalState(DeltaSeconds);
     if (bWantsToSlide && !bSliding)
     {
         if (CanStartSlide())
@@ -103,6 +109,67 @@ void UBaselineCharacterMovement::UpdateCharacterStateBeforeMovement(float DeltaS
         SetSliding(false);
     }
     Super::UpdateCharacterStateBeforeMovement(DeltaSeconds);
+}
+
+void UBaselineCharacterMovement::TrackTraversal(UActorComponent* Logic, UAnimMontage* Montage, UPrimitiveComponent* Obstacle)
+{
+    TraversalLogic = Logic;
+    TraversalMontage = Montage;
+    TraversalObstacle = Obstacle;
+    TraversalReplicationGrace = 0.f;
+    bTraversalFinished = false;
+    // The async montage node can fail before its Blueprint callbacks are bound.
+    UpdateTraversalState(0.f);
+}
+
+void UBaselineCharacterMovement::UpdateTraversalState(float DeltaSeconds)
+{
+    if (TraversalLogic.IsValid())
+    {
+        const auto* Anim = CharacterOwner->GetMesh()->GetAnimInstance();
+        if (!TraversalMontage.IsValid() || !Anim || !Anim->Montage_IsPlaying(TraversalMontage.Get()))
+            FinishTraversal();
+    }
+    if (TraversalReplicationGrace > 0.f)
+    {
+        TraversalReplicationGrace -= DeltaSeconds;
+        if (TraversalReplicationGrace <= 0.f)
+        {
+            bIgnoreClientMovementErrorChecksAndCorrection = false;
+            bServerAcceptClientAuthoritativePosition = false;
+        }
+    }
+    // CMC can replay an older saved move or receive an in-flight correction
+    // after the montage callback restored falling. Do not let that resurrect
+    // traversal's flying mode. A new traversal explicitly opens it again;
+    // physical interactions retain ownership of their own flying movement.
+    if (bTraversalFinished && MovementMode == MOVE_Flying)
+    {
+        const auto* Physical = CharacterOwner->FindComponentByClass<UBaselinePhysicalInteractionComponent>();
+        if (!Physical || !Physical->IsBusy()) SetMovementMode(MOVE_Falling);
+    }
+}
+
+void UBaselineCharacterMovement::FinishTraversal()
+{
+    if (!TraversalLogic.IsValid()) return;
+    // Cleanup is shared by blend-out, interruption, completion and the movement
+    // watchdog. It may run more than once, including after ragdoll or death.
+    if (auto* Doing = FindFProperty<FBoolProperty>(TraversalLogic->GetClass(), TEXT("DoingTraversalAction")))
+        Doing->SetPropertyValue_InContainer(TraversalLogic.Get(), false);
+    if (TraversalObstacle.IsValid()) CharacterOwner->GetCapsuleComponent()->IgnoreComponentWhenMoving(TraversalObstacle.Get(), false);
+    TraversalLogic.Reset();
+    TraversalMontage.Reset();
+    TraversalObstacle.Reset();
+    bTraversalFinished = true;
+    TraversalReplicationGrace = .2f;
+    const auto* Physical = CharacterOwner->FindComponentByClass<UBaselinePhysicalInteractionComponent>();
+    if (MovementMode == MOVE_Flying && (!Physical || !Physical->IsBusy()))
+    {
+        bForceNextFloorCheck = true;
+        // Let CMC find the actual floor: a canceled climb may still be airborne.
+        SetMovementMode(MOVE_Falling);
+    }
 }
 
 void UBaselineCharacterMovement::UpdateCharacterStateAfterMovement(float DeltaSeconds)
