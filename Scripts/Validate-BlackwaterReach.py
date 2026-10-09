@@ -31,9 +31,20 @@ try:
             mesh=component.static_mesh
             if mesh:counts[mesh.get_name()]=counts.get(mesh.get_name(),0)+component.get_instance_count()
     redwoods=sum(n for name,n in counts.items() if name.startswith('SM_Redwood_'))
+    grass=sum(n for name,n in counts.items() if name.startswith('SM_Grass'))
+    bushes=sum(n for name,n in counts.items() if 'Bush' in name and name.endswith('_Trunk'))
+    cliffs=sum(n for name,n in counts.items() if name.startswith('SM_Cliff'))
     assert redwoods>=2000,redwoods
-    assert sum(n for name,n in counts.items() if name.startswith('SM_Fern_'))>=15000
-    report['checks'].append({'case':'pcg_output_persists_after_reload','redwoods':redwoods,'instances_by_mesh':counts})
+    assert grass>=100000,grass
+    assert bushes>=1000,bushes
+    assert cliffs>=100,cliffs
+    forest=next(a for a in actors if a.get_actor_label().startswith('Broadleaf Forest -'))
+    assert all(forest.get_editor_property(k).generated for k in ['PCG_Terrain','PCG_Cover','PCG_Biome'])
+    roads=[a for a in actors if a.get_actor_label().startswith('Broadleaf Path -')]
+    assert len(roads)==12 and all(a.get_editor_property('PCG_Biome').generated for a in roads)
+    assert not any(a.get_actor_label().startswith('PCG Redwood Forest') for a in actors)
+    report['checks'].append({'case':'broadleaf_output_persists_after_reload','redwoods':redwoods,
+        'grass_instances':grass,'bushes':bushes,'rock_cliffs':cliffs,'road_subbiomes':len(roads),'instances_by_mesh':counts})
     npcs=[a for a in actors if isinstance(a,u.HollowPinesMonster)]
     assert len(npcs)==4 and all(not a.rehearse_attacks for a in npcs)
     report['checks'].append({'case':'four_passive_creature_encounters','actors':[a.get_actor_label() for a in npcs]})

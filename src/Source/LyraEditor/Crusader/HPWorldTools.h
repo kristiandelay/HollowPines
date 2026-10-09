@@ -8,6 +8,8 @@ class UHPWorldTools : public UBlueprintFunctionLibrary
     GENERATED_BODY()
 public:
     UFUNCTION(BlueprintCallable, Category="Hollow Pines|Editor")
+    static bool ConfigureBiomeMeshBounds(class UBlueprint* Blueprint);
+    UFUNCTION(BlueprintCallable, Category="Hollow Pines|Editor")
     static bool BuildCreatureAnimation(class UAnimBlueprint* Blueprint, class UBlendSpace* Locomotion, class UAnimSequence* Fallback);
     UFUNCTION(BlueprintCallable, Category="Hollow Pines|Editor")
     static bool ConfigureLocomotion(class UBlendSpace* BlendSpace, class UAnimSequence* Idle, class UAnimSequence* Walk, class UAnimSequence* Run, float WalkSpeed, float RunSpeed);

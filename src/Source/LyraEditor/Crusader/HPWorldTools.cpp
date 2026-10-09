@@ -36,6 +36,36 @@ template<class T> static T* AddNode(UEdGraph* Graph,int32 X,int32 Y)
     Graph->AddNode(Node,true,false);Node->CreateNewGuid();Node->PostPlacedNewNode();Node->AllocateDefaultPins();
     Node->NodePosX=X;Node->NodePosY=Y;return Node;
 }
+bool UHPWorldTools::ConfigureBiomeMeshBounds(UBlueprint* Blueprint)
+{
+    // The vendor sub-biome clamps its spline bounds to a Landscape even when
+    // SpawnOnMeshes is enabled. Wire that option in the project's copy so
+    // the editor Spawn button also works with baked Mesh Terrain surfaces.
+    if (!Blueprint) return false;
+    TArray<UEdGraph*> Graphs;Blueprint->GetAllGraphs(Graphs);
+    for (auto* Graph:Graphs)
+    {
+        if (Graph->GetFName()!=TEXT("Construct")) continue;
+        for (UEdGraphNode* Node:Graph->Nodes)
+        {
+            auto* Call=Cast<UK2Node_CallFunction>(Node);
+            if (!Call || !Call->FindPin(TEXT("SplineBoundsMin"))) continue;
+            auto* Pin=Call->FindPin(TEXT("SpawnOnMeshes"));
+            if (!Pin) continue;
+            Blueprint->Modify();Graph->Modify();Call->Modify();
+            if (Pin->LinkedTo.IsEmpty())
+            {
+                auto* Get=AddNode<UK2Node_VariableGet>(Graph,Call->NodePosX-220,Call->NodePosY+350);
+                Get->VariableReference.SetSelfMember(TEXT("SpawnOnMeshes"));Get->ReconstructNode();
+                if (!Graph->GetSchema()->TryCreateConnection(Get->FindPin(TEXT("SpawnOnMeshes")),Pin)) return false;
+            }
+            FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Blueprint);
+            FKismetEditorUtilities::CompileBlueprint(Blueprint);
+            return Blueprint->Status!=BS_Error;
+        }
+    }
+    return false;
+}
 bool UHPWorldTools::BuildCreatureAnimation(UAnimBlueprint* Blueprint,UBlendSpace* Locomotion,UAnimSequence* Fallback)
 {
     if (!Blueprint || !Locomotion || !Fallback) return false;

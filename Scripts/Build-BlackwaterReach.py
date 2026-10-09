@@ -297,46 +297,6 @@ def dressing_stage():
     label(bounds,'Blackwater Navigation','Dressing')
     print('BLACKWATER_CAMP_AND_LANDMARKS_CREATED',flush=True)
 
-def pcg_graph():
-    folder=BASE+'/PCG';path=folder+'/PCG_BlackwaterForest'
-    graph=u.load_asset(path) if lib.does_asset_exist(path) else assets.create_asset('PCG_BlackwaterForest',folder,u.PCGGraph,u.PCGGraphFactory())
-    for node in list(graph.nodes):graph.remove_node(node)
-    graph.set_editor_property('description','Hollow Pines forest. Authored exclusion points -> terrain projection -> seeded transforms -> weighted Redwood and understory instances. Rebuild layout points with Build-BlackwaterReach.py after changing paths.')
-    layers=[('Redwood',16,5,[f'/Game/Redwood/Models/Trees/SM_Redwood_{s}' for s in ['Large_01','Large_02','Large_03','Medium_01','Medium_02','Small_01','Small_02']],True,100000),
-            ('Ferns',5.5,.5,[f'/Game/Redwood/Models/Plants/SM_Fern_0{i}_A' for i in [1,2,3,5,6]],False,15000),
-            ('Forest Floor',8,.5,['/Game/Redwood/Models/Plants/SM_Grass_01','/Game/Redwood/Models/Plants/SM_Grass_02','/Game/Redwood/Models/Debris/SM_Debris_01','/Game/Redwood/Models/Debris/SM_Debris_04'],False,11000)]
-    report=[]
-    for index,(name,spacing,clearance,meshes,collision,cull) in enumerate(layers):
-        points=layout.scatter(spacing,clearance,layout.SEED+index)
-        source,settings=graph.add_node_of_type(u.PCGCreatePointsSettings)
-        settings.points_to_create=[u.PCGPoint(transform=u.Transform(location=u.Vector(x*100,y*100,z*100),rotation=u.Rotator(pitch=0,yaw=0,roll=0),scale=u.Vector(1,1,1)),density=1,seed=i+layout.SEED) for i,(x,y,z,_,_) in enumerate(points)]
-        settings.cull_points_outside_volume=False
-        ray,ray_settings=graph.add_node_of_type(u.PCGWorldRayHitSettings)
-        assert u.CRBlueprintTools.set_property_text(ray_settings,'QueryParams','(bOverrideDefaultParams=True,RayOrigin=(X=0,Y=0,Z=40000),RayDirection=(X=0,Y=0,Z=-1),RayLength=80000,bIgnorePCGHits=True,bIgnoreSelfHits=True,bTraceComplex=True)')
-        projection,ps=graph.add_node_of_type(u.PCGProjectionSettings)
-        pp=ps.projection_params;pp.project_rotations=False;ps.projection_params=pp
-        transform,ts=graph.add_node_of_type(u.PCGTransformPointsSettings)
-        ts.rotation_min=u.Rotator(pitch=0,yaw=-180,roll=0);ts.rotation_max=u.Rotator(pitch=0,yaw=180,roll=0)
-        ts.scale_min=u.Vector(.8,.8,.8);ts.scale_max=u.Vector(1.2,1.2,1.2);ts.seed=layout.SEED+index
-        spawn,ss=graph.add_node_of_type(u.PCGStaticMeshSpawnerSettings)
-        entries=[]
-        for mesh_path in meshes:
-            entry=u.PCGMeshSelectorWeightedEntry()
-            collision_text='QueryAndPhysics' if collision else 'NoCollision';profile='BlockAll' if collision else 'NoCollision'
-            assert entry.import_text(f'(Descriptor=(StaticMesh="{mesh_path}.{mesh_path.rsplit("/",1)[-1]}",ComponentClass="/Script/Engine.HierarchicalInstancedStaticMeshComponent",BodyInstance=(CollisionEnabled={collision_text},CollisionProfileName="{profile}"),InstanceEndCullDistance={cull},InstanceStartCullDistance={int(cull*.8)},bCanEverAffectNavigation={str(collision)},WorldPositionOffsetDisableDistance=18000),Weight=1)')
-            entries.append(entry)
-        ss.mesh_selector_parameters.set_editor_property('mesh_entries',entries)
-        graph.add_edge(source,'Out',projection,'In');graph.add_edge(ray,'Out',projection,'Projection Target')
-        graph.add_edge(projection,'Out',transform,'In');graph.add_edge(transform,'Out',spawn,'In')
-        graph.add_edge(spawn,'Out',graph.get_output_node(),'Out')
-        for col,node in enumerate([source,ray,projection,transform,spawn]):
-            node.set_node_position(col*340,index*400+(120 if node==ray else 0))
-            node.set_editor_property('node_title',name+' '+node.get_settings().get_class().get_name().replace('PCG','').replace('Settings',''))
-        report.append({'layer':name,'points':len(points),'meshes':meshes,'collision':collision})
-    save(graph)
-    (ROOT/'resources/BlackwaterForestPCG.json').write_text(json.dumps({'seed':layout.SEED,'graph':graph.get_path_name(),'layers':report},indent=2)+'\n')
-    return graph
-
 def river_preset():
     # The supplied graph samples Landscape height. Replace those three sources
     # in a project copy with complex traces against the baked Mesh Terrain.
@@ -385,28 +345,7 @@ def pcg_stage():
     for actor in actors.get_all_level_actors():
         if actor.get_actor_label() in ['North Lake - River Generator','Swamp - River Generator']:
             actors.destroy_actor(actor)
-    graph=pcg_graph()
-    # Custom EasyBiomes rows retain vendor presets and keep Redwood's complete meshes intact.
     folder=BASE+'/PCG'
-    source=u.load_asset('/Game/EasyBiomes/Foliage/Trees/Poplar/DT_Poplar_Collection')
-    path=folder+'/DT_Redwood_Collection'
-    collection=u.load_asset(path) if lib.does_asset_exist(path) else lib.duplicate_asset(source.get_path_name(),path)
-    sets=[]
-    for set_name,files in [('TreesHuge',['Large_01','Large_02','Large_03']),('TreesBig',['Medium_01','Medium_02']),('TreesMedium',['Small_01','Small_02'])]:
-        sets.append({'SetName':set_name,'Meshes':[f"/Script/Engine.StaticMesh'/Game/Redwood/Models/Trees/SM_Redwood_{f}.SM_Redwood_{f}'" for f in files],'CullingGroup':0})
-    assert u.DataTableFunctionLibrary.fill_data_table_from_json_string(collection,json.dumps([{'Name':'Redwood','Sets':sets}]))
-    save(collection)
-    source=u.load_asset('/Game/EasyBiomes/PCG/BiomePresets/DT_Biome_Poplar')
-    rows=json.loads(u.DataTableFunctionLibrary.export_data_table_to_json_string(source))
-    row=next(r for r in rows if r['Name']=='Forest_Dense');row['Name']='HollowPines_Redwood'
-    row['BiomeGraph']=graph.get_path_name();row['CoverageGraph']='None';row['TerrainGraph']='None'
-    row['MeshCollections']=[collection.get_path_name()]
-    path=folder+'/DT_Biome_HollowPines'
-    table=u.load_asset(path) if lib.does_asset_exist(path) else lib.duplicate_asset(source.get_path_name(),path)
-    assert u.DataTableFunctionLibrary.fill_data_table_from_json_string(table,json.dumps([row]));save(table)
-    forest=label(actors.spawn_actor_from_class(u.PCGVolume,u.Vector(0,0,5000)),'PCG Redwood Forest - Seed '+str(layout.SEED),'PCG')
-    forest.pcg_component.set_graph(graph);forest.pcg_component.seed=layout.SEED
-    forest.pcg_component.generate(True)
     river_table=river_preset()
     basin_path=folder+'/BP_BlackwaterBasin'
     if lib.does_asset_exist(basin_path):bp=u.load_asset(basin_path)
@@ -435,6 +374,11 @@ def pcg_stage():
         label(biome,name+' - River Generator','PCG')
         # Actor label/folder changes can invalidate generation during construction.
         biome.get_editor_property('PCG_Biome').generate(True)
+    integration=ROOT/'Scripts/Integrate-BlackwaterBroadleaf.py'
+    namespace={'HP_BROADLEAF_STAGE':'assets'}
+    exec(compile(integration.read_text(),str(integration),'exec'),namespace)
+    namespace['HP_BROADLEAF_STAGE']='world'
+    exec(compile(integration.read_text(),str(integration),'exec'),namespace)
     print('BLACKWATER_PCG_GENERATION_QUEUED',flush=True)
 
 if not lib.does_asset_exist(MAP):
@@ -460,6 +404,3 @@ u.EditorLevelLibrary.set_level_viewport_camera_info(u.Vector(5500,-2600,layout.P
 tune=ROOT/'Scripts/Tune-BlackwaterMaterials.py'
 exec(compile(tune.read_text(),str(tune),'exec'),{})
 print('BLACKWATER_STAGE_COMPLETE',STAGE,flush=True)
-if STAGE in ['all','pcg']:
-    finalize=ROOT/'Scripts/Finalize-BlackwaterReach.py'
-    exec(compile(finalize.read_text(),str(finalize),'exec'),globals())

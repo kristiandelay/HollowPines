@@ -7,18 +7,18 @@
       "views": [
         {
           "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 5114.599754285946
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
           "z_cm": 5114.600059461727
         },
         {
-          "player": "B_CRTraversalPawn_C_1",
-          "z_cm": 5114.600082349911
-        },
-        {
-          "player": "B_CRTraversalPawn_C_1",
+          "player": "B_CRTraversalPawn_C_0",
           "z_cm": 5114.6
         },
         {
-          "player": "B_CRTraversalPawn_C_0",
+          "player": "B_CRTraversalPawn_C_1",
           "z_cm": 5114.6
         }
       ]
@@ -28,19 +28,19 @@
       "views": [
         {
           "player": "B_CRTraversalPawn_C_0",
-          "z_cm": 4855.131468584042
+          "z_cm": 4855.131431014475
         },
         {
           "player": "B_CRTraversalPawn_C_1",
-          "z_cm": 4911.133197101889
+          "z_cm": 4911.133132039942
+        },
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 4911.133132039942
         },
         {
           "player": "B_CRTraversalPawn_C_1",
           "z_cm": 4855.13
-        },
-        {
-          "player": "B_CRTraversalPawn_C_0",
-          "z_cm": 4911.133197101889
         }
       ]
     },
@@ -52,19 +52,19 @@
       "views": [
         {
           "player": "B_CRTraversalPawn_C_0",
-          "z_cm": 3858.145545523347
+          "z_cm": 3858.1455549600178
         },
         {
           "player": "B_CRTraversalPawn_C_1",
-          "z_cm": 3858.145487246556
+          "z_cm": 3858.145531013371
+        },
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 3858.145531013371
         },
         {
           "player": "B_CRTraversalPawn_C_1",
           "z_cm": 3858.15
-        },
-        {
-          "player": "B_CRTraversalPawn_C_0",
-          "z_cm": 3858.145487246556
         }
       ]
     },

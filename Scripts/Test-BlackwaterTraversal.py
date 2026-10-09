@@ -12,7 +12,7 @@ assert levels.load_level('/Game/HollowPines/Maps/L_BlackwaterReach')
 settings=u.load_object(None,'/Script/UnrealEd.Default__LevelEditorPlaySettings')
 for key,value in [('PlayNetMode','PIE_ListenServer'),('PlayNumberOfClients','2'),('RunUnderOneProcess','True'),('bLaunchSeparateServer','False')]:
     assert u.CRBlueprintTools.set_property_text(settings,key,value)
-forest_test={'phase':'ready','next':0,'busy':False,'deadline':time.monotonic()+120,'results':[]}
+forest_test={'phase':'ready','next':0,'busy':False,'deadline':time.monotonic()+240,'results':[]}
 
 def forest_finish(error=None):
     u.unregister_slate_post_tick_callback(forest_test['handle'])
@@ -34,12 +34,19 @@ def forest_tick(dt):
         players=[s.get_pawn() for s in u.GameplayStatics.get_all_actors_of_class(host,u.HollowPinesPlayerState)]
         if len(players)!=2 or not all(players):return
         phase=forest_test['phase']
-        if phase=='ready':forest_test.update(phase='camp',next=now+4)
+        if phase=='ready':
+            # A dense map can finish loading on the host before the client's
+            # replicated pawns arrive. Begin movement checks after both views
+            # are ready, rather than timing readiness from the host alone.
+            for w in worlds:
+                pawns=[s.get_pawn() for s in u.GameplayStatics.get_all_actors_of_class(w,u.HollowPinesPlayerState)]
+                if len(pawns)!=2 or not all(pawns):return
+            forest_test.update(phase='camp',next=now+4)
         elif phase in ['camp','cave','bridge']:
             views=[]
             for w in worlds:
                 pawns=[s.get_pawn() for s in u.GameplayStatics.get_all_actors_of_class(w,u.HollowPinesPlayerState)]
-                assert len(pawns)==2 and all(pawns)
+                assert len(pawns)==2 and all(pawns),(phase,w.get_path_name(),'Player pawns not ready',pawns)
                 for pawn in pawns:
                     movement=pawn.character_movement
                     assert movement.movement_mode==u.MovementMode.MOVE_WALKING,(phase,pawn.get_name(),str(movement.movement_mode))
