@@ -2,6 +2,8 @@
 import unreal as u
 from pathlib import Path
 import time,json,traceback
+gore_log_path=Path(u.Paths.convert_relative_path_to_full(u.Paths.project_log_dir()))/'HollowPines.log'
+gore_log_start=gore_log_path.stat().st_size
 assert not u.EditorLevelLibrary.get_pie_worlds(False), 'Stop PIE before running this test'
 assert u.get_editor_subsystem(u.LevelEditorSubsystem).load_level('/Game/HollowPines/Maps/L_MonsterAnimationGym')
 settings=u.load_object(None,'/Script/UnrealEd.Default__LevelEditorPlaySettings')
@@ -32,6 +34,12 @@ def gore_players(world):
 def gore_finish(error=None):
     u.unregister_slate_post_tick_callback(gore_test['handle'])
     u.CRBlueprintTools.set_property_text(gore_test_profile,'OrganDropChance',str(gore_test['original_drop_chance']))
+    with gore_log_path.open('rb') as log:
+        log.seek(gore_log_start)
+        recent=log.read().decode('utf-8',errors='replace').splitlines()
+    failures=[line for line in recent if ('Failed to compile Material' in line and 'HollowPines' in line)
+        or ('PIE: Error:' in line and 'BP_PlayerGorePainter' in line)]
+    if not error and failures:error='Rendering/Blueprint errors: '+repr(failures)
     gore_test.update(finished=True,error=error)
     (gore_root/'Artifacts/PlayerGoreValidation.json').write_text(json.dumps({'passed':error is None,'error':error,'results':gore_test['results']},indent=2)+'\n')
     print('PLAYER_GORE_TEST_COMPLETE',error)

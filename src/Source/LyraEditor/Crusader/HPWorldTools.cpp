@@ -11,6 +11,7 @@
 #include "K2Node_FunctionEntry.h"
 #include "K2Node_CallFunction.h"
 #include "K2Node_InputKey.h"
+#include "K2Node_CustomEvent.h"
 #include "K2Node_Event.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 #include "Kismet2/KismetEditorUtilities.h"
@@ -192,6 +193,11 @@ bool UHPWorldTools::ConfigureGorePainter(UBlueprint* Blueprint)
             // vendor's demo mouse input and continuous firing are not applicable.
             if (Cast<UK2Node_InputKey>(Node)) FBlueprintEditorUtils::RemoveNode(Blueprint,Node,true);
             if (auto* Event=Cast<UK2Node_Event>(Node);Event && Event->EventReference.GetMemberName()==TEXT("ReceiveTick"))
+                if (auto* Pin=Event->FindPin(TEXT("then"))) Pin->BreakAllPinLinks();
+            // The demo also loops through a latent custom event to follow the
+            // first local pawn. That pawn can be absent during respawn; this
+            // receiver positions its isolated capture explicitly when painting.
+            if (auto* Event=Cast<UK2Node_CustomEvent>(Node);Event && Event->CustomFunctionName.ToString().Replace(TEXT(" "),TEXT(""))==TEXT("DelayedTick"))
                 if (auto* Pin=Event->FindPin(TEXT("then"))) Pin->BreakAllPinLinks();
             if (auto* Call=Cast<UK2Node_CallFunction>(Node);Call && Call->FunctionReference.GetMemberName()==TEXT("EnableInput"))
             {

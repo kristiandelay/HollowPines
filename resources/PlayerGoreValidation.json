@@ -8,26 +8,26 @@
         {
           "player": "B_CRTraversalPawn_C_0",
           "world": "L_MonsterAnimationGym",
-          "painted_pixels": 104,
-          "target": "/Game/HollowPines/Maps/UEDPIE_0_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_0.TextureRenderTarget2D_0"
-        },
-        {
-          "player": "B_CRTraversalPawn_C_1",
-          "world": "L_MonsterAnimationGym",
-          "painted_pixels": 110,
+          "painted_pixels": 100,
           "target": "/Game/HollowPines/Maps/UEDPIE_0_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_1.TextureRenderTarget2D_0"
         },
         {
           "player": "B_CRTraversalPawn_C_1",
           "world": "L_MonsterAnimationGym",
-          "painted_pixels": 1740,
-          "target": "/Game/HollowPines/Maps/UEDPIE_1_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_1.TextureRenderTarget2D_0"
+          "painted_pixels": 110,
+          "target": "/Game/HollowPines/Maps/UEDPIE_0_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_0.TextureRenderTarget2D_0"
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "world": "L_MonsterAnimationGym",
+          "painted_pixels": 1733,
+          "target": "/Game/HollowPines/Maps/UEDPIE_1_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_0.TextureRenderTarget2D_0"
         },
         {
           "player": "B_CRTraversalPawn_C_0",
           "world": "L_MonsterAnimationGym",
-          "painted_pixels": 1623,
-          "target": "/Game/HollowPines/Maps/UEDPIE_1_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_0.TextureRenderTarget2D_0"
+          "painted_pixels": 1601,
+          "target": "/Game/HollowPines/Maps/UEDPIE_1_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_1.TextureRenderTarget2D_0"
         }
       ]
     },
@@ -40,10 +40,10 @@
     {
       "case": "torso_remains_intact_and_random_organs_drop",
       "counts": [
-        13,
-        14,
-        13,
-        14
+        10,
+        10,
+        10,
+        10
       ],
       "drop_chance_forced_for_test": true
     },

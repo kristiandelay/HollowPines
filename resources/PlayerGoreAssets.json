@@ -3,28 +3,28 @@
   "players": [
     {
       "name": "MayaCross",
-      "mesh": "/Game/HollowPines/Players/MayaCross/MayaCross",
-      "material": "/Game/HollowPines/Gore/Materials/MI_MayaCross_Gore"
+      "mesh": "/Game/HollowPines/Players/MayaCross/MayaCross.MayaCross",
+      "material": "/Game/HollowPines/Gore/Materials/MI_MayaCross_Gore.MI_MayaCross_Gore"
     },
     {
       "name": "MudboundSurvivor",
-      "mesh": "/Game/HollowPines/Players/MudboundSurvivor/MudboundSurvivor",
-      "material": "/Game/HollowPines/Gore/Materials/MI_MudboundSurvivor_Gore"
+      "mesh": "/Game/HollowPines/Players/MudboundSurvivor/MudboundSurvivor.MudboundSurvivor",
+      "material": "/Game/HollowPines/Gore/Materials/MI_MudboundSurvivor_Gore.MI_MudboundSurvivor_Gore"
     },
     {
       "name": "WastelandHero",
-      "mesh": "/Game/HollowPines/Players/WastelandHero/WastelandHero",
-      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandHero_Gore"
+      "mesh": "/Game/HollowPines/Players/WastelandHero/WastelandHero.WastelandHero",
+      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandHero_Gore.MI_WastelandHero_Gore"
     },
     {
       "name": "WastelandSentinel",
-      "mesh": "/Game/HollowPines/Players/WastelandSentinel/WastelandSentinel",
-      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandSentinel_Gore"
+      "mesh": "/Game/HollowPines/Players/WastelandSentinel/WastelandSentinel.WastelandSentinel",
+      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandSentinel_Gore.MI_WastelandSentinel_Gore"
     },
     {
       "name": "WastelandVanguard",
-      "mesh": "/Game/HollowPines/Players/WastelandVanguard/WastelandVanguard",
-      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandVanguard_Gore"
+      "mesh": "/Game/HollowPines/Players/WastelandVanguard/WastelandVanguard.WastelandVanguard",
+      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandVanguard_Gore.MI_WastelandVanguard_Gore"
     }
   ],
   "protected": [

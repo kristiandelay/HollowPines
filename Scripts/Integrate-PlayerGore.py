@@ -42,9 +42,13 @@ if not ao:ao=edit.create_material_expression(master,u.MaterialExpressionScalarPa
 ao.set_editor_property('parameter_name','Player AO');ao.set_editor_property('default_value',1)
 assert edit.connect_material_expressions(ao,'',by_name['MaterialExpressionLinearInterpolate_3'],'A')
 # A shared render-target asset may contain demo paint. New characters start clean.
+empty_mask=duplicate(VENDOR+'/Textures/T_black',BASE+'/T_EmptyWoundMask')
+empty_mask.set_editor_property('srgb',False)
+save(empty_mask)
 for e in expressions:
     if isinstance(e,u.MaterialExpressionTextureSampleParameter2D) and str(e.get_editor_property('parameter_name'))=='MaskMapTexture':
-        e.texture=u.load_asset(VENDOR+'/Textures/T_black')
+        e.texture=empty_mask
+        e.sampler_type=u.MaterialSamplerType.SAMPLERTYPE_LINEAR_COLOR
 edit.recompile_material(master);save(master)
 players=[]
 sub=u.get_engine_subsystem(u.SubobjectDataSubsystem)
