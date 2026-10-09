@@ -1,0 +1,26 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "2.5",
+	"FriendlyName": "EasySkyV2",
+	"Description": "EasySky V2",
+	"Category": "PS Studios",
+	"CreatedBy": "PS Studios",
+	"CreatedByURL": "https://psstudios.nl/",
+	"DocsURL": "https://psstudios.nl/easyskyv2/",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/377238e239a5438e9313a23d1aee5440",
+	"SupportURL": "https://discord.gg/zuFFh7292E",
+	"EngineVersion": "5.8.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "EasySkyV2",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	]
+}

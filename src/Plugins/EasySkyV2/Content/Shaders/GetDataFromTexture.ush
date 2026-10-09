@@ -1,0 +1,119 @@
+/*
+Copyright 2023, PSStudios EasySkyV2
+
+Texture Format:
+
+Generic info:        Nr_Spheres, Nr_Boxes, 
+Sphere               x, y, z, radius, power, value, hardness, temperature_type
+Box                  x, y, z, extend_x, extend_y, extend_z, forward_x, forward_y, power, value, hardness, temperature_type
+
+*/
+
+struct Functions
+{
+    float GetPixelValue(Texture2D<float4> inTexture, SamplerState inTextureSampler, float inWidth, int inPixelNr, int inRowNumber)
+    {
+        float Pixel = 1.0 / inWidth;
+        float HalfPixel = 0.5 / inWidth;
+        float RowHeight = 1.0 / 256;
+        float RowHalfHeight = 0.5 / 256;
+        float2 uv = float2(float(inPixelNr) * Pixel + HalfPixel, RowHeight * inRowNumber + RowHalfHeight);
+        float SampleResult = Texture2DSample(inTexture, inTextureSampler, uv).r;
+        return SampleResult;
+    }
+
+    float GetBoxValue(Texture2D<float4> inTexture, SamplerState inSamplerState, float inWidth, int inRowNumber, float inValue, float3 inPosition)
+    {
+        int CO = 1;
+        float x                 = GetPixelValue(inTexture, inSamplerState, inWidth, CO, inRowNumber);
+        float y                 = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float z                 = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float b_x               = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float b_y               = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float b_z               = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float forward_x         = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float forward_y         = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float power             = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float value             = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float hardness          = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float temperature_type  = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+
+        float3 Position         = float3(x,y,z);
+        float3 Bounds           = float3(b_x, b_y, b_z);
+        
+        // No Z rotation, forward vector is premultiplied with 1,1,0 and then normalized.
+        float4 forward_vector   = normalize(float4(forward_x, forward_y, 0.0, 0.0));
+        float4 up_vector        = float4(0.0, 0.0, 1.0, 0.0);
+        float4 side_vector      = float4(normalize(cross(forward_vector.xyz, up_vector.xyz)), 0.0);
+        
+        float4x4 box_matrix     = transpose(float4x4(forward_vector, side_vector, up_vector, float4(Position, 1.0)));
+
+        float3 current_pos_box_space = mul(float4(Position - inPosition, 1.0), box_matrix).xyz;
+        
+        float3 componentWiseEdgeDistance = max(abs(current_pos_box_space) - Bounds, float3(0.0, 0.0, 0.0));
+        float outsideDistance   = length(componentWiseEdgeDistance);
+        float insideDistance    = min(min(componentWiseEdgeDistance.z, min(componentWiseEdgeDistance.x, componentWiseEdgeDistance.y)), 0);
+        float distance          = (outsideDistance / max(0.01, hardness) / 0.5 + insideDistance);
+        float3 box_g            = float3(distance, distance, distance) / Bounds;
+        float box_gradient      = max(max(box_g.x, box_g.y), box_g.z);
+
+        float pow_gradient      = pow(saturate(box_gradient), power);
+
+        if (temperature_type == 1.0)
+            return(inValue + value * (1.0 - pow_gradient));
+        else
+            return(lerp(value, inValue, pow_gradient));
+
+    }
+
+    float GetSphereValue(Texture2D<float4> inTexture, SamplerState inSamplerState, float inWidth, int inRowNumber, float inValue, float3 inPosition)
+    {
+        int CO = 1;
+
+        // x, y, z, radius, power, value, temperature_type
+        float x                 = GetPixelValue(inTexture, inSamplerState, inWidth, CO, inRowNumber);
+        float y                 = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float z                 = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float3 Position         = float3(x,y,z);
+        
+        float distance          = length(Position - inPosition);
+        float radius            = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float length            = saturate((radius-distance) / radius);
+        float power             = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+        float value             = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+
+        float temperature_type  = GetPixelValue(inTexture, inSamplerState, inWidth, ++CO, inRowNumber);
+
+        length = pow(length, power);
+
+        if (temperature_type >= 0.5)
+            return(inValue + value * length); // Temperature Difference
+        else
+            return(lerp(inValue, value, length)); // Fixed Temperature
+
+    }
+
+    float Out(Texture2D<float4> inTexture, SamplerState inSamplerState, float inWidth, float3 inPosition, float inValue)
+    {
+        // Get the number of spheres and the number of boxes
+        float NumberOfBoxes = GetPixelValue(inTexture, inSamplerState, inWidth, 0, 0);
+        float NumberOfSpheres = GetPixelValue(inTexture, inSamplerState, inWidth, 0, 1);
+
+        for (int j = 2; j < NumberOfBoxes + NumberOfSpheres + 2; ++j)
+        {
+            int row = j;
+            float volume_type           = GetPixelValue(inTexture, inSamplerState, inWidth, 0, row);
+
+            if (volume_type >= 1.5)
+                inValue = GetBoxValue(inTexture, inSamplerState, inWidth, row, inValue, inPosition);
+            else if (volume_type >= 0.5)
+                inValue = GetSphereValue(inTexture, inSamplerState, inWidth, row, inValue, inPosition);
+        }
+
+        return inValue;
+       
+    }
+};
+
+Functions f;
+return f.Out(inTexture, inTextureSampler, inWidth, inPosition, inValue);

@@ -1,0 +1,140 @@
+/*
+Copyright 2022, PSStudios EasySkyV2
+
+Texture Format:
+
+Generic info:        Nr_Spheres, Nr_Boxes, 
+Sphere               x, y, z, radius, power, value, hardness, 
+Box                  x, y, z, extend_x, extend_y, extend_z, forward_x, forward_y, power, value, hardness
+
+*/
+
+float PixelX = 1.0 / inTextureSize.x;
+float PixelY = 1.0 / inTextureSize.y;
+float TotalWeight = 0.0;
+float TotalColor = 0.0;
+
+
+struct Functions
+{
+    float normpdf(in float x, in float sigma)
+    {
+        return 0.39894*exp(-0.5*x*x/(sigma*sigma))/sigma;
+    }
+
+    float Out()
+    {
+        int HalfKernel = int(inKernel / 2.0);
+
+        for (int i=-HalfKernel;i<HalfKernel;++i)
+        {
+            for (int j=-HalfKernel;j<HalfKernel;++j)
+            {
+                float2 uv = inUV + float2(PixelX * i, PixelY * j);
+                if (uv.x >= 0.0 && uv.x <= 1.0 && uv.y >= 0.0 && uv.y <= 1.0)
+                {
+                    float SampleResult = Texture2DSample(inTexture, inTextureSampler, uv).r;
+
+                    float Weight = normpdf(length(float2(i,j)), HalfKernel);
+                    TotalWeight += Weight;
+                    TotalColor += SampleResult;
+                }
+                
+            }
+        }
+        //float Test = Texture2DSample(inTexture, inTextureSampler, inUV).r;
+        //return(Test);
+        return(TotalColor / TotalWeight);
+    }
+
+    /*
+    float GetPixelValue(int inPixelNr)
+    {
+        float2 uv = float2(float(inPixelNr) * Pixel + HalfPixel, HalfPixel);
+        float SampleResult = Texture2DSample(inTexture, inTextureSampler, uv).r;
+        return SampleResult;
+    }
+
+    float Out()
+    {
+
+        float SampleResult = Texture2DSample(inTexture, inTextureSampler, uv).r;
+
+        // Get the number of spheres and the number of boxes
+        uv = float2(Pixel + HalfPixel, HalfPixel);
+        float NumberOfBoxes = GetPixelValue(0);
+        uv = float2(HalfPixel, HalfPixel);
+        float NumberOfSpheres = GetPixelValue(1);
+        int CO = 2; // Current Offset
+
+        // Box Calculations:
+        for (int j = 0; j < int(NumberOfBoxes); j++)
+        {
+            // x, y, z, extend_x, extend_y, extend_z, forward_x, forward_y, power, value, hardness
+            CO = 2 + (j * NumberOfValuesBox);
+            
+            float x = GetPixelValue(CO);
+            float y = GetPixelValue(CO + 1);
+            float z = GetPixelValue(CO + 2);
+            float b_x = GetPixelValue(CO + 3);
+            float b_y = GetPixelValue(CO + 4);
+            float b_z = GetPixelValue(CO + 5);
+            float forward_x = GetPixelValue(CO + 6);
+            float forward_y = GetPixelValue(CO + 7);
+            float power = GetPixelValue(CO + 8);
+            float value = asfloat(GetPixelValue(CO + 9));
+            float hardness = GetPixelValue(CO + 10);
+
+            float3 Position = float3(x,y,z);
+            float3 Bounds = float3(b_x, b_y, b_z);
+            
+            // No Z rotation, forward vector is premultiplied with 1,1,0 and then normalized.
+            float4 forward_vector = normalize(float4(forward_x, forward_y, 0.0, 0.0));
+            float4 up_vector = float4(0.0, 0.0, 1.0, 0.0);
+            float4 side_vector = float4(normalize(cross(forward_vector.xyz, up_vector.xyz)), 0.0);
+            
+            float4x4 box_matrix = transpose(float4x4(forward_vector, side_vector, up_vector, float4(Position, 1.0)));
+
+            float3 current_pos_box_space = mul(float4(Position - inPosition, 1.0), box_matrix).xyz;
+
+            float3 componentWiseEdgeDistance = abs(current_pos_box_space) - Bounds;
+            float outsideDistance = length(max(componentWiseEdgeDistance, 0.0));
+            float insideDistance = max(max(componentWiseEdgeDistance.z, max(componentWiseEdgeDistance.x, componentWiseEdgeDistance.y)), 0);
+            float gradient = (outsideDistance / max(0.01, (1.0 - hardness)) / 0.5 + insideDistance) / Bounds;
+
+            float pow_gradient = pow(saturate(gradient), power);
+            inValue += value * (1.0 - pow_gradient);
+        }
+        
+        int SphereStartOffset = 2 + int(NumberOfBoxes * NumberOfValuesBox);
+
+        // Sphere Calculations:
+        for (int i = 0; i < int(NumberOfSpheres); i++)
+        {
+            CO = SphereStartOffset + (i * NumberOfValuesSphere);
+
+            // x, y, z, radius, power, value
+            float x = GetPixelValue(CO);
+            float y = GetPixelValue(CO + 1);
+            float z = GetPixelValue(CO + 2);
+
+            float3 Position = float3(x,y,z);
+            float distance = length(Position - inPosition);
+
+            float radius = GetPixelValue(CO + 3);
+
+            float length = saturate((radius-distance) / radius);
+
+            float power = GetPixelValue(CO + 4);
+
+            length = pow(length, power);
+            float value = GetPixelValue(CO + 5);
+            inValue += value * length;
+        }
+        return inValue;
+    }
+    */
+};
+
+Functions f;
+return f.Out();

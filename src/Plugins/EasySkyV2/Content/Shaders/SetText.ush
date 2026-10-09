@@ -1,0 +1,63 @@
+struct Functions
+{
+
+    float4 CalculateUVOffset(float2 inUV, int inCurCount, float inFinalMask, float inCurNumber, float inXOffset, float inMaskOut, float inSize, float2 inLocation, float2 inOriginalUV)
+    {
+        float2 Offset = float2(inCurCount * inSize, 0.0);
+        float2 UVOffset = inOriginalUV - inLocation - Offset;
+        float CurVal = frac(inCurNumber / 10.0);
+        float2 UVSize = UVOffset / float2(inSize, 1.0);
+        float2 MaskUV = frac(saturate(UVOffset * float2(1.0 / inSize, 1.0 / inSize / (0.1 / inSize) )));
+        float mask = ceil(min(MaskUV.x, MaskUV.y));
+        float2 UV = inUV * (1.0 - mask);
+        UV += float2(UVSize.x * 0.5 + inXOffset, UVSize.y + CurVal) * (1.0 - inFinalMask);
+        float FinalMask = max(mask, inFinalMask);
+        float MaskOut = max(saturate(min(MaskUV.x, MaskUV.y)), inMaskOut);
+        return(float4(UV, FinalMask, MaskOut));
+    }
+
+    float3 Out(float inSize, float2 inLocation, float inNumber, float2 inOriginalUV)
+    {
+        float MaskOut = 0.0;
+        float2 UV = float2(0.0, 0.0);
+        int count = (int)floor(log10(abs(inNumber)) + 1);
+        float FinalMask = 0.0;
+        float MaskPadding = 0.07;
+        
+        int CurNumber = int(abs(inNumber));
+
+        if (int(inNumber) == 0)
+        {
+            float4 Data = CalculateUVOffset(UV, 1, FinalMask, 0, 0, MaskOut, inSize, inLocation, inOriginalUV);
+            return(float3(Data.x, Data.y, ceil(Data.w - MaskPadding)));
+        }
+        
+        for (int i=0; i < count; i++)
+        {
+            int CurCount = count - i;
+            float4 Data = CalculateUVOffset(UV, CurCount, FinalMask, CurNumber, 0, MaskOut, inSize, inLocation, inOriginalUV);
+            UV = float2(Data.x, Data.y);
+            FinalMask = Data.z;
+            MaskOut = Data.w;
+
+            CurNumber = int(CurNumber / 10.0);
+
+        }
+
+        if (inNumber < 0)
+        {
+            float4 Data = CalculateUVOffset(UV, 0, FinalMask, 0.1, 0.5, MaskOut, inSize, inLocation, inOriginalUV);
+            UV = float2(Data.x, Data.y);
+            FinalMask = Data.z;
+            MaskOut = Data.w;
+        }
+
+
+        
+        return float3(UV.x, UV.y, ceil(MaskOut - MaskPadding));
+    }
+
+};
+
+Functions f;
+return f.Out(Size, Location, Number, InUV);
