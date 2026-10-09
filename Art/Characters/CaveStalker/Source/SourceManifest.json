@@ -1,0 +1,38 @@
+{
+  "name": "CaveStalker",
+  "original_archive_name": "Meshy_AI_Cave_Stalker_1009030731_texture_fbx.zip",
+  "archive_path": "Mockups/Monsters/CaveStalker.zip",
+  "archive_sha256": "ed35fb79c857c50d04479558f31909ff7ea50d93d988ab22fd39862dbb0a2ad7",
+  "files": [
+    {
+      "original": "Meshy_AI_Cave_Stalker_1009030731_texture_fbx/Meshy_AI_Cave_Stalker_1009030731_texture.fbx",
+      "file": "CaveStalker.fbx",
+      "bytes": 56573436,
+      "sha256": "62ef58dba23955ff4b86eb694cbfc908cd8433df2af47245d0709059fa3d768c"
+    },
+    {
+      "original": "Meshy_AI_Cave_Stalker_1009030731_texture_fbx/Meshy_AI_Cave_Stalker_1009030731_texture.png",
+      "file": "CaveStalker_BaseColor.png",
+      "bytes": 7185588,
+      "sha256": "368058be47c7b7fef4e58271def489802945056419a2b8cadd6d9b60af87b462"
+    },
+    {
+      "original": "Meshy_AI_Cave_Stalker_1009030731_texture_fbx/Meshy_AI_Cave_Stalker_1009030731_texture_metallic.png",
+      "file": "CaveStalker_Metallic.png",
+      "bytes": 38820,
+      "sha256": "a195b4b929f75898a3a53538271ec2557fae2a77cb3eccd1d8c214d27c95a51a"
+    },
+    {
+      "original": "Meshy_AI_Cave_Stalker_1009030731_texture_fbx/Meshy_AI_Cave_Stalker_1009030731_texture_normal.png",
+      "file": "CaveStalker_Normal.png",
+      "bytes": 5844199,
+      "sha256": "4876e043c70b4b7b6402060420441d14d3b7b676f7dfcad857e49f1c3276d3eb"
+    },
+    {
+      "original": "Meshy_AI_Cave_Stalker_1009030731_texture_fbx/Meshy_AI_Cave_Stalker_1009030731_texture_roughness.png",
+      "file": "CaveStalker_Roughness.png",
+      "bytes": 1605259,
+      "sha256": "4c207db7a42cec34882f84fd5bbe53205510dc309ebf3b44a240138e8d707d78"
+    }
+  ]
+}

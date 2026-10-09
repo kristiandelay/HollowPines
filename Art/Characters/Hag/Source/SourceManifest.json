@@ -1,0 +1,38 @@
+{
+  "name": "Hag",
+  "original_archive_name": "Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_fbx.zip",
+  "archive_path": "Mockups/Monsters/Hag.zip",
+  "archive_sha256": "d01b62ddfa8b593a9023b177a7e2ca17b1e8b0893dc861a5d5423010db0d266f",
+  "files": [
+    {
+      "original": "Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_fbx/Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture.fbx",
+      "file": "Hag.fbx",
+      "bytes": 85353804,
+      "sha256": "8cf3e38362f165bc07c6475cacd5a1605ee2ba5ab83e94c686c83c3dcda1062b"
+    },
+    {
+      "original": "Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_fbx/Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture.png",
+      "file": "Hag_BaseColor.png",
+      "bytes": 6191228,
+      "sha256": "cdd44651d6a64a414e65bbb76063cefb00930e52a774ff474d8355f4f3528d25"
+    },
+    {
+      "original": "Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_fbx/Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_metallic.png",
+      "file": "Hag_Metallic.png",
+      "bytes": 35743,
+      "sha256": "a98083feb332f0519eac2b03376bc99f423e8c7be941c22f336b4ab5138fd9de"
+    },
+    {
+      "original": "Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_fbx/Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_normal.png",
+      "file": "Hag_Normal.png",
+      "bytes": 5258274,
+      "sha256": "704bd396405a33e50f904cb908ee6203a83b8d0f4cab3827c64f0eb9cf147298"
+    },
+    {
+      "original": "Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_fbx/Meshy_AI_The_Hag_Cursed_Harves_1009030817_texture_roughness.png",
+      "file": "Hag_Roughness.png",
+      "bytes": 1511879,
+      "sha256": "ee7e06303d68fb2c2130f4f165c27286b80d3641bccb0f777f92565221fa13aa"
+    }
+  ]
+}

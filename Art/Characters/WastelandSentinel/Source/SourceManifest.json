@@ -1,0 +1,38 @@
+{
+  "name": "WastelandSentinel",
+  "original_archive_name": "Meshy_AI_Wasteland_Sentinel_1009030648_texture_fbx.zip",
+  "archive_path": "Mockups/Players/WastelandSentinel.zip",
+  "archive_sha256": "71aa539db39d0965ad35ff77ed46b4c59818d09ca89120672d7c59f5c1c0ee01",
+  "files": [
+    {
+      "original": "Meshy_AI_Wasteland_Sentinel_1009030648_texture_fbx/Meshy_AI_Wasteland_Sentinel_1009030648_texture.fbx",
+      "file": "WastelandSentinel.fbx",
+      "bytes": 76694892,
+      "sha256": "0a1616384a51c067ccb895a78fecb36302b894ed4674a681e53dda8944f08779"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Sentinel_1009030648_texture_fbx/Meshy_AI_Wasteland_Sentinel_1009030648_texture.png",
+      "file": "WastelandSentinel_BaseColor.png",
+      "bytes": 6284977,
+      "sha256": "61b742a107cf0ef1d3409590db35c0ffc8fe96eaefcb76b5cddf553ce13861cc"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Sentinel_1009030648_texture_fbx/Meshy_AI_Wasteland_Sentinel_1009030648_texture_metallic.png",
+      "file": "WastelandSentinel_Metallic.png",
+      "bytes": 31887,
+      "sha256": "ab32b5299821a0a71bb58f9d3de8df169a3f97f2393c979db46a3279797eb675"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Sentinel_1009030648_texture_fbx/Meshy_AI_Wasteland_Sentinel_1009030648_texture_normal.png",
+      "file": "WastelandSentinel_Normal.png",
+      "bytes": 4890160,
+      "sha256": "51ffd9d0fbe469b5d3bdc86c90c2c16f495d4fbee45dbd95f7056778c03e019d"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Sentinel_1009030648_texture_fbx/Meshy_AI_Wasteland_Sentinel_1009030648_texture_roughness.png",
+      "file": "WastelandSentinel_Roughness.png",
+      "bytes": 1589865,
+      "sha256": "8841067f99cdafee20c0489335631fb44e7a43b928f275773055763bc48532de"
+    }
+  ]
+}

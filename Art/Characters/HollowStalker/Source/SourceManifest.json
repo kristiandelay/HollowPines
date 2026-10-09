@@ -1,0 +1,38 @@
+{
+  "name": "HollowStalker",
+  "original_archive_name": "Meshy_AI_The_Hollow_Stalker_1009030745_texture_fbx.zip",
+  "archive_path": "Mockups/Monsters/HollowStalker.zip",
+  "archive_sha256": "2872269e099275440822f35c81ae6b6820ff0af5354bd7e357fca2a0a06ef08a",
+  "files": [
+    {
+      "original": "Meshy_AI_The_Hollow_Stalker_1009030745_texture_fbx/Meshy_AI_The_Hollow_Stalker_1009030745_texture.fbx",
+      "file": "HollowStalker.fbx",
+      "bytes": 35662300,
+      "sha256": "e1b088405967a8dc294dae493efd9a3019a769a7bc865bf5713584dd9e966535"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Stalker_1009030745_texture_fbx/Meshy_AI_The_Hollow_Stalker_1009030745_texture.png",
+      "file": "HollowStalker_BaseColor.png",
+      "bytes": 6400138,
+      "sha256": "c4c3078ae73209eb39fb73b5a90f9b2e5582b82f736b4799c0fdbe976b816159"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Stalker_1009030745_texture_fbx/Meshy_AI_The_Hollow_Stalker_1009030745_texture_metallic.png",
+      "file": "HollowStalker_Metallic.png",
+      "bytes": 24878,
+      "sha256": "6f8ae5b9f20ddf2e781cd7eebaf1152f5a7954e89e6fca3bdb204ff7c3b443ef"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Stalker_1009030745_texture_fbx/Meshy_AI_The_Hollow_Stalker_1009030745_texture_normal.png",
+      "file": "HollowStalker_Normal.png",
+      "bytes": 5139381,
+      "sha256": "40d85dbae039ba08f60febabcfdf9f4bc1a128b770b3a5fd35349ba4170d09bd"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Stalker_1009030745_texture_fbx/Meshy_AI_The_Hollow_Stalker_1009030745_texture_roughness.png",
+      "file": "HollowStalker_Roughness.png",
+      "bytes": 1541255,
+      "sha256": "893815330f1cec9ee3c2ee2d57dab057d6ae45697050a53453ad4a2e142c6d17"
+    }
+  ]
+}

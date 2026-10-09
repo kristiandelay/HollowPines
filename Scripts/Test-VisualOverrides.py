@@ -9,8 +9,9 @@ import unreal as u
 visual_out = Path(u.Paths.convert_relative_path_to_full(u.Paths.project_dir())).parent / 'Artifacts/VisualOverride'
 visual_out.mkdir(parents=True, exist_ok=True)
 visual_widget = u.get_editor_subsystem(u.EditorUtilitySubsystem).spawn_and_register_tab(u.load_asset('/Game/Widgets/GameAnimationWidget'))
-visual_test = {'phase':'setup', 'index':0, 'angle':0, 'next':0, 'results':[], 'busy':False, 'deadline':time.monotonic()+240}
-visual_names = ['Echo', 'Twinblast', 'Kellan', 'Manny', 'Quinn', 'UE4_Mannequin']
+visual_test = {'phase':'setup', 'index':0, 'angle':0, 'next':0, 'results':[], 'busy':False, 'deadline':time.monotonic()+600}
+visual_catalog = u.get_default_object(u.load_asset('/Game/Blueprints/GM_Sandbox').generated_class())
+visual_names = [entry.get_name().removeprefix('BP_').removesuffix('_C') for entry in visual_catalog.get_editor_property('VisualOverrides_Soft')]
 
 
 def visual_input(pawn, name, value):
@@ -57,7 +58,7 @@ def visual_tick(dt):
         if phase in ['aim','measure','fire','fire_check']:visual_input(pawn,'Aim',1)
         if now<visual_test['next']:return
         if phase=='setup':
-            assert visual_widget.get_editor_property('VisualOverrideListWrapBox').get_children_count()==6
+            assert visual_widget.get_editor_property('VisualOverrideListWrapBox').get_children_count()==len(visual_names)
             current=u.SystemLibrary.get_console_variable_int_value('DDCvar.VisualOverride')
             if current>=0:visual_click(current)
             visual_test['pawn']=pawn.get_name()
@@ -109,7 +110,7 @@ def visual_tick(dt):
             assert error<18,f'{visual_names[visual_test["index"]]} weapon aim differs by {error:.1f} degrees'
             assert abs(muzzle.roll)<45,f'Weapon is rolled over: {muzzle.roll:.1f} degrees'
             assert weapon.root_component.get_attach_parent()==mesh
-            if visual_test['angle'] in [0,3]:
+            if globals().get('VISUAL_CAPTURE_IMAGES',True) and visual_test['angle'] in [0,3]:
                 suffix='-left' if eq.is_left_shoulder() else '-right'
                 visual_test['capture']=u.AutomationLibrary.take_high_res_screenshot(1280,800,str(visual_out/(visual_names[visual_test['index']]+suffix+'.png')),delay=0)
             visual_test['angle']+=1
@@ -132,11 +133,11 @@ def visual_tick(dt):
             assert visual_ammo(pawn)==visual_test['ammo'],'Changing skin interrupted the reload'
             visual_test['results'].append({'case':'fire_reload_and_clear','visual':visual_names[visual_test['index']]})
             visual_test['index']+=1
-            if visual_test['index']==6:visual_finish()
+            if visual_test['index']==len(visual_names):visual_finish()
             else:visual_test.update(phase='select',next=now+.1)
     except Exception:visual_finish(traceback.format_exc())
     finally:visual_test['busy']=False
 
 
 visual_test['handle']=u.register_slate_post_tick_callback(visual_tick)
-print('Started widget visual override checks for all six characters')
+print('Started widget visual override checks for',len(visual_names),'characters')

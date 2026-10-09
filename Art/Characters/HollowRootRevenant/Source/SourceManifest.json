@@ -1,0 +1,38 @@
+{
+  "name": "HollowRootRevenant",
+  "original_archive_name": "Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_fbx.zip",
+  "archive_path": "Mockups/Monsters/HollowRootRevenant.zip",
+  "archive_sha256": "3eeac21788cc7412ea5c921d08681ed04022ee090e24cd80dd889eda25e7291d",
+  "files": [
+    {
+      "original": "Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_fbx/Meshy_AI_The_Hollow_Root_Reven_1009030756_texture.fbx",
+      "file": "HollowRootRevenant.fbx",
+      "bytes": 105387804,
+      "sha256": "f63185f2035fe57cd011b39c5ada21ed8b9672b006c7acc045d7acf3b4f37be6"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_fbx/Meshy_AI_The_Hollow_Root_Reven_1009030756_texture.png",
+      "file": "HollowRootRevenant_BaseColor.png",
+      "bytes": 6133428,
+      "sha256": "0d7c9f90abf8cde8753108e16c7fa5bfe05389bcd55daa5d3b77f079cd6bcb01"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_fbx/Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_metallic.png",
+      "file": "HollowRootRevenant_Metallic.png",
+      "bytes": 95514,
+      "sha256": "d6bc69ab4ce3c574530ccdb5293c57bd46966a698425b59acdd100f9c4d4cc55"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_fbx/Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_normal.png",
+      "file": "HollowRootRevenant_Normal.png",
+      "bytes": 5328041,
+      "sha256": "2916c9d921f89e3f09a13653cfd3fc194d63e3ad651dcc0bc1b3b032f8610696"
+    },
+    {
+      "original": "Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_fbx/Meshy_AI_The_Hollow_Root_Reven_1009030756_texture_roughness.png",
+      "file": "HollowRootRevenant_Roughness.png",
+      "bytes": 1883844,
+      "sha256": "1978a84c8dca60e0565018392cfeadc7417c44805b960c352f6c8715cb43758a"
+    }
+  ]
+}

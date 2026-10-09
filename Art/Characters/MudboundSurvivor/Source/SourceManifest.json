@@ -1,0 +1,38 @@
+{
+  "name": "MudboundSurvivor",
+  "original_archive_name": "Meshy_AI_Mudbound_Survivor_1009030626_texture_fbx.zip",
+  "archive_path": "Mockups/Players/MudboundSurvivor.zip",
+  "archive_sha256": "8901525805d51c62183d74f30566dfe5c3492f09a15224e5125176a754da6264",
+  "files": [
+    {
+      "original": "Meshy_AI_Mudbound_Survivor_1009030626_texture_fbx/Meshy_AI_Mudbound_Survivor_1009030626_texture.fbx",
+      "file": "MudboundSurvivor.fbx",
+      "bytes": 68016508,
+      "sha256": "1a2c88c3d35b6ffbb3470c52cc894fac6dd42e38c2fc31ed3d7da26daa006910"
+    },
+    {
+      "original": "Meshy_AI_Mudbound_Survivor_1009030626_texture_fbx/Meshy_AI_Mudbound_Survivor_1009030626_texture.png",
+      "file": "MudboundSurvivor_BaseColor.png",
+      "bytes": 6238880,
+      "sha256": "46c16f52051f126b3095e2f1b96254e28ed0c7a4659d66a463cc4402b1bf227d"
+    },
+    {
+      "original": "Meshy_AI_Mudbound_Survivor_1009030626_texture_fbx/Meshy_AI_Mudbound_Survivor_1009030626_texture_metallic.png",
+      "file": "MudboundSurvivor_Metallic.png",
+      "bytes": 30811,
+      "sha256": "666789fa54c769d42a4b8d86a4ccd667429b2f0e7db8a2d026f367b11adb33ec"
+    },
+    {
+      "original": "Meshy_AI_Mudbound_Survivor_1009030626_texture_fbx/Meshy_AI_Mudbound_Survivor_1009030626_texture_normal.png",
+      "file": "MudboundSurvivor_Normal.png",
+      "bytes": 4936751,
+      "sha256": "a26409c54fc8859cffc9f67b68d95025595faf7c62be3a04ff04ff78c8e3187b"
+    },
+    {
+      "original": "Meshy_AI_Mudbound_Survivor_1009030626_texture_fbx/Meshy_AI_Mudbound_Survivor_1009030626_texture_roughness.png",
+      "file": "MudboundSurvivor_Roughness.png",
+      "bytes": 1766722,
+      "sha256": "40896cf83136839e45a3aa946781fac98a7a0097d717d65ca193e5c810c0eeb2"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "passed": true,
+  "catalog_entries": [
+    "/Game/Blueprints/RetargetedCharacters/BP_Echo.BP_Echo_C",
+    "/Game/Blueprints/RetargetedCharacters/BP_Twinblast.BP_Twinblast_C",
+    "/Game/MetaHumans/Kellan/BP_Kellan.BP_Kellan_C",
+    "/Game/Blueprints/RetargetedCharacters/BP_Manny.BP_Manny_C",
+    "/Game/Blueprints/RetargetedCharacters/BP_Quinn.BP_Quinn_C",
+    "/Game/Blueprints/RetargetedCharacters/BP_UE4_Mannequin.BP_UE4_Mannequin_C",
+    "/Game/HollowPines/Players/MayaCross/BP_MayaCross.BP_MayaCross_C",
+    "/Game/HollowPines/Players/MudboundSurvivor/BP_MudboundSurvivor.BP_MudboundSurvivor_C",
+    "/Game/HollowPines/Players/WastelandHero/BP_WastelandHero.BP_WastelandHero_C",
+    "/Game/HollowPines/Players/WastelandSentinel/BP_WastelandSentinel.BP_WastelandSentinel_C",
+    "/Game/HollowPines/Players/WastelandVanguard/BP_WastelandVanguard.BP_WastelandVanguard_C"
+  ],
+  "characters": [
+    {
+      "name": "MayaCross",
+      "skeletal_mesh": "/Game/HollowPines/Players/MayaCross/MayaCross.MayaCross",
+      "skeleton": "/Game/HollowPines/Players/MayaCross/MayaCross_Skeleton.MayaCross_Skeleton",
+      "bones": 87,
+      "lods": 3,
+      "ik_chains": 29,
+      "physics": "/Game/HollowPines/Players/MayaCross/MayaCross_PhysicsAsset.MayaCross_PhysicsAsset",
+      "root_motion_bone": "root",
+      "bounds_cm": {
+        "origin": [
+          -0.006282806396484375,
+          -0.27671146392822266,
+          90.00760123319924
+        ],
+        "extent": [
+          66.78700637817383,
+          24.601040840148926,
+          90.01328804902732
+        ]
+      }
+    },
+    {
+      "name": "MudboundSurvivor",
+      "skeletal_mesh": "/Game/HollowPines/Players/MudboundSurvivor/MudboundSurvivor.MudboundSurvivor",
+      "skeleton": "/Game/HollowPines/Players/MudboundSurvivor/MudboundSurvivor_Skeleton.MudboundSurvivor_Skeleton",
+      "bones": 87,
+      "lods": 3,
+      "ik_chains": 29,
+      "physics": "/Game/HollowPines/Players/MudboundSurvivor/MudboundSurvivor_PhysicsAsset.MudboundSurvivor_PhysicsAsset",
+      "root_motion_bone": "root",
+      "bounds_cm": {
+        "origin": [
+          -0.013805389404296875,
+          0.006709098815917969,
+          89.99824059102684
+        ],
+        "extent": [
+          81.82991409301758,
+          23.772669792175293,
+          90.01756751444191
+        ]
+      }
+    },
+    {
+      "name": "WastelandHero",
+      "skeletal_mesh": "/Game/HollowPines/Players/WastelandHero/WastelandHero.WastelandHero",
+      "skeleton": "/Game/HollowPines/Players/WastelandHero/WastelandHero_Skeleton.WastelandHero_Skeleton",
+      "bones": 87,
+      "lods": 3,
+      "ik_chains": 29,
+      "physics": "/Game/HollowPines/Players/WastelandHero/WastelandHero_PhysicsAsset.WastelandHero_PhysicsAsset",
+      "root_motion_bone": "root",
+      "bounds_cm": {
+        "origin": [
+          2.6702880859375e-05,
+          -0.06428146362304688,
+          89.98868524096906
+        ],
+        "extent": [
+          88.51334762573242,
+          25.341753005981445,
+          89.99861944653094
+        ]
+      }
+    },
+    {
+      "name": "WastelandSentinel",
+      "skeletal_mesh": "/Game/HollowPines/Players/WastelandSentinel/WastelandSentinel.WastelandSentinel",
+      "skeleton": "/Game/HollowPines/Players/WastelandSentinel/WastelandSentinel_Skeleton.WastelandSentinel_Skeleton",
+      "bones": 87,
+      "lods": 3,
+      "ik_chains": 29,
+      "physics": "/Game/HollowPines/Players/WastelandSentinel/WastelandSentinel_PhysicsAsset.WastelandSentinel_PhysicsAsset",
+      "root_motion_bone": "root",
+      "bounds_cm": {
+        "origin": [
+          -0.08850860595703125,
+          -1.0686120986938477,
+          89.97895000129938
+        ],
+        "extent": [
+          85.9205093383789,
+          25.44462490081787,
+          90.01175739616156
+        ]
+      }
+    },
+    {
+      "name": "WastelandVanguard",
+      "skeletal_mesh": "/Game/HollowPines/Players/WastelandVanguard/WastelandVanguard.WastelandVanguard",
+      "skeleton": "/Game/HollowPines/Players/WastelandVanguard/WastelandVanguard_Skeleton.WastelandVanguard_Skeleton",
+      "bones": 87,
+      "lods": 3,
+      "ik_chains": 29,
+      "physics": "/Game/HollowPines/Players/WastelandVanguard/WastelandVanguard_PhysicsAsset.WastelandVanguard_PhysicsAsset",
+      "root_motion_bone": "root",
+      "bounds_cm": {
+        "origin": [
+          -0.04720306396484375,
+          0.5896844863891602,
+          90.01047746418044
+        ],
+        "extent": [
+          87.61023712158203,
+          22.808568000793457,
+          90.02463300945237
+        ]
+      }
+    },
+    {
+      "name": "CaveStalker",
+      "skeletal_mesh": "/Game/HollowPines/Monsters/CaveStalker/CaveStalker.CaveStalker",
+      "skeleton": "/Game/HollowPines/Monsters/CaveStalker/CaveStalker_Skeleton.CaveStalker_Skeleton",
+      "bones": 51,
+      "lods": 3,
+      "ik_chains": 16,
+      "physics": "/Game/HollowPines/Monsters/CaveStalker/CaveStalker_PhysicsAsset.CaveStalker_PhysicsAsset",
+      "root_motion_bone": "CaveStalker_Rig",
+      "bounds_cm": {
+        "origin": [
+          -0.05877685546875,
+          -0.12779998779296875,
+          51.531120877712965
+        ],
+        "extent": [
+          70.95819091796875,
+          125.01944732666016,
+          51.5414041467011
+        ]
+      }
+    },
+    {
+      "name": "HollowStalker",
+      "skeletal_mesh": "/Game/HollowPines/Monsters/HollowStalker/HollowStalker.HollowStalker",
+      "skeleton": "/Game/HollowPines/Monsters/HollowStalker/HollowStalker_Skeleton.HollowStalker_Skeleton",
+      "bones": 48,
+      "lods": 3,
+      "ik_chains": 15,
+      "physics": "/Game/HollowPines/Monsters/HollowStalker/HollowStalker_PhysicsAsset.HollowStalker_PhysicsAsset",
+      "root_motion_bone": "HollowStalker_Rig",
+      "bounds_cm": {
+        "origin": [
+          -0.0785980224609375,
+          -0.20735549926757812,
+          120.00795318651944
+        ],
+        "extent": [
+          165.46412658691406,
+          74.66183853149414,
+          120.01661346387118
+        ]
+      }
+    },
+    {
+      "name": "HollowRootRevenant",
+      "skeletal_mesh": "/Game/HollowPines/Monsters/HollowRootRevenant/HollowRootRevenant.HollowRootRevenant",
+      "skeleton": "/Game/HollowPines/Monsters/HollowRootRevenant/HollowRootRevenant_Skeleton.HollowRootRevenant_Skeleton",
+      "bones": 46,
+      "lods": 3,
+      "ik_chains": 14,
+      "physics": "/Game/HollowPines/Monsters/HollowRootRevenant/HollowRootRevenant_PhysicsAsset.HollowRootRevenant_PhysicsAsset",
+      "root_motion_bone": "HollowRootRevenant_Rig",
+      "bounds_cm": {
+        "origin": [
+          -0.0143280029296875,
+          2.6867599487304688,
+          275.0143994037062
+        ],
+        "extent": [
+          314.82228088378906,
+          87.54942321777344,
+          275.06073487363756
+        ]
+      }
+    },
+    {
+      "name": "Hag",
+      "skeletal_mesh": "/Game/HollowPines/Monsters/Hag/Hag.Hag",
+      "skeleton": "/Game/HollowPines/Monsters/Hag/Hag_Skeleton.Hag_Skeleton",
+      "bones": 65,
+      "lods": 3,
+      "ik_chains": 21,
+      "physics": "/Game/HollowPines/Monsters/Hag/Hag_PhysicsAsset.Hag_PhysicsAsset",
+      "root_motion_bone": "Hag_Rig",
+      "bounds_cm": {
+        "origin": [
+          0.03351593017578125,
+          0.9865875244140625,
+          115.00611814716831
+        ],
+        "extent": [
+          109.68025207519531,
+          56.37612533569336,
+          115.00047364970669
+        ]
+      }
+    }
+  ]
+}

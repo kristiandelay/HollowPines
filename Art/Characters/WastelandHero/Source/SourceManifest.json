@@ -1,0 +1,38 @@
+{
+  "name": "WastelandHero",
+  "original_archive_name": "Meshy_AI_Wasteland_Hero_1009030637_texture_fbx.zip",
+  "archive_path": "Mockups/Players/WastelandHero.zip",
+  "archive_sha256": "6ab1138f8840550ca261181494a1fb29b0b1a5827c273c72700083ce5a541998",
+  "files": [
+    {
+      "original": "Meshy_AI_Wasteland_Hero_1009030637_texture_fbx/Meshy_AI_Wasteland_Hero_1009030637_texture.fbx",
+      "file": "WastelandHero.fbx",
+      "bytes": 59619596,
+      "sha256": "5e3871e9f68248b268c368d396e816f9c0f1d75e575203f1c294091175b056aa"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Hero_1009030637_texture_fbx/Meshy_AI_Wasteland_Hero_1009030637_texture.png",
+      "file": "WastelandHero_BaseColor.png",
+      "bytes": 6671664,
+      "sha256": "38f3c69674a9264c18192d883737712c4dcd813d029b390653f098864dd10daf"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Hero_1009030637_texture_fbx/Meshy_AI_Wasteland_Hero_1009030637_texture_metallic.png",
+      "file": "WastelandHero_Metallic.png",
+      "bytes": 26169,
+      "sha256": "9c4eac1fcb05606e8466d5f2f8d450ae54928627950e0c75242d1e629f70b1b5"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Hero_1009030637_texture_fbx/Meshy_AI_Wasteland_Hero_1009030637_texture_normal.png",
+      "file": "WastelandHero_Normal.png",
+      "bytes": 5520019,
+      "sha256": "4203da8b09cf54331c28a6a77c505b264b8e71499bf19b66f943c8137eef40ad"
+    },
+    {
+      "original": "Meshy_AI_Wasteland_Hero_1009030637_texture_fbx/Meshy_AI_Wasteland_Hero_1009030637_texture_roughness.png",
+      "file": "WastelandHero_Roughness.png",
+      "bytes": 1500692,
+      "sha256": "597ce6687a8a1d0490d807d154d432ad83c3f9b1d0c105edd022308880002d94"
+    }
+  ]
+}

@@ -1,0 +1,633 @@
+{
+  "passed": true,
+  "error": null,
+  "results": [
+    {
+      "case": "widget_select",
+      "visual": "Echo",
+      "mesh": "EchoBody"
+    },
+    {
+      "case": "aim",
+      "visual": "Echo",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.674495999459322,
+      "weapon_roll_degrees": -1.4077893420356267
+    },
+    {
+      "case": "aim",
+      "visual": "Echo",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.209524647024681,
+      "weapon_roll_degrees": -0.003247532178897318
+    },
+    {
+      "case": "aim",
+      "visual": "Echo",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 3.941216918449125,
+      "weapon_roll_degrees": -2.7717782318308237
+    },
+    {
+      "case": "aim",
+      "visual": "Echo",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.759263562705335,
+      "weapon_roll_degrees": 1.229888069385746
+    },
+    {
+      "case": "aim",
+      "visual": "Echo",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.4208224955395874,
+      "weapon_roll_degrees": -0.8480657534269287
+    },
+    {
+      "case": "aim",
+      "visual": "Echo",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.179750954626707,
+      "weapon_roll_degrees": 3.191757628939974
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "Echo"
+    },
+    {
+      "case": "widget_select",
+      "visual": "Twinblast",
+      "mesh": "TwinBlast"
+    },
+    {
+      "case": "aim",
+      "visual": "Twinblast",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 6.302394231693709,
+      "weapon_roll_degrees": -1.0163858536766777
+    },
+    {
+      "case": "aim",
+      "visual": "Twinblast",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 2.8840620740964833,
+      "weapon_roll_degrees": 0.035050825348041416
+    },
+    {
+      "case": "aim",
+      "visual": "Twinblast",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.065979629682234,
+      "weapon_roll_degrees": -2.840305595278405
+    },
+    {
+      "case": "aim",
+      "visual": "Twinblast",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.621421758655131,
+      "weapon_roll_degrees": 1.2357137937128568
+    },
+    {
+      "case": "aim",
+      "visual": "Twinblast",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.3874977441252514,
+      "weapon_roll_degrees": -1.0249271991050068
+    },
+    {
+      "case": "aim",
+      "visual": "Twinblast",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 3.883165314391063,
+      "weapon_roll_degrees": 3.2400808412808346
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "Twinblast"
+    },
+    {
+      "case": "widget_select",
+      "visual": "Kellan",
+      "mesh": "Body"
+    },
+    {
+      "case": "aim",
+      "visual": "Kellan",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 6.213787621689686,
+      "weapon_roll_degrees": -1.2622500821041989
+    },
+    {
+      "case": "aim",
+      "visual": "Kellan",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.1136439594358345,
+      "weapon_roll_degrees": 0.4975194160163436
+    },
+    {
+      "case": "aim",
+      "visual": "Kellan",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.4084622973968655,
+      "weapon_roll_degrees": -3.463404556754519
+    },
+    {
+      "case": "aim",
+      "visual": "Kellan",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.589036667324713,
+      "weapon_roll_degrees": 1.0078470578903944
+    },
+    {
+      "case": "aim",
+      "visual": "Kellan",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.490613448650923,
+      "weapon_roll_degrees": -1.3261600604489963
+    },
+    {
+      "case": "aim",
+      "visual": "Kellan",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 3.9578532335847556,
+      "weapon_roll_degrees": 3.5848488682804938
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "Kellan"
+    },
+    {
+      "case": "widget_select",
+      "visual": "Manny",
+      "mesh": "Manny"
+    },
+    {
+      "case": "aim",
+      "visual": "Manny",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 6.248811679222977,
+      "weapon_roll_degrees": -1.1797128635001521
+    },
+    {
+      "case": "aim",
+      "visual": "Manny",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.102034215219604,
+      "weapon_roll_degrees": 0.5806018254679158
+    },
+    {
+      "case": "aim",
+      "visual": "Manny",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.434745025834011,
+      "weapon_roll_degrees": -3.77701182468238
+    },
+    {
+      "case": "aim",
+      "visual": "Manny",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.77623540690389,
+      "weapon_roll_degrees": 0.6428045139279167
+    },
+    {
+      "case": "aim",
+      "visual": "Manny",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.5209622978310633,
+      "weapon_roll_degrees": -1.1628877686577908
+    },
+    {
+      "case": "aim",
+      "visual": "Manny",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.042919255295794,
+      "weapon_roll_degrees": 3.350443211925262
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "Manny"
+    },
+    {
+      "case": "widget_select",
+      "visual": "Quinn",
+      "mesh": "SkeletalMesh"
+    },
+    {
+      "case": "aim",
+      "visual": "Quinn",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.817945093792599,
+      "weapon_roll_degrees": -1.1942390452877922
+    },
+    {
+      "case": "aim",
+      "visual": "Quinn",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.0400065664144043,
+      "weapon_roll_degrees": 0.7855903624102375
+    },
+    {
+      "case": "aim",
+      "visual": "Quinn",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.196398125968302,
+      "weapon_roll_degrees": -3.7563532811541545
+    },
+    {
+      "case": "aim",
+      "visual": "Quinn",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.833426292196943,
+      "weapon_roll_degrees": 0.5361081105099705
+    },
+    {
+      "case": "aim",
+      "visual": "Quinn",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.3362148541574843,
+      "weapon_roll_degrees": -0.5733958466867554
+    },
+    {
+      "case": "aim",
+      "visual": "Quinn",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.312843195597036,
+      "weapon_roll_degrees": 3.691176668410782
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "Quinn"
+    },
+    {
+      "case": "widget_select",
+      "visual": "UE4_Mannequin",
+      "mesh": "SkeletalMesh"
+    },
+    {
+      "case": "aim",
+      "visual": "UE4_Mannequin",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.81424180087936,
+      "weapon_roll_degrees": -0.8089351324290381
+    },
+    {
+      "case": "aim",
+      "visual": "UE4_Mannequin",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.0292291175605532,
+      "weapon_roll_degrees": 0.40156288037857046
+    },
+    {
+      "case": "aim",
+      "visual": "UE4_Mannequin",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.109141285262969,
+      "weapon_roll_degrees": -3.7968491741459154
+    },
+    {
+      "case": "aim",
+      "visual": "UE4_Mannequin",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.884184322143535,
+      "weapon_roll_degrees": 0.2722030826397539
+    },
+    {
+      "case": "aim",
+      "visual": "UE4_Mannequin",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.262595337794221,
+      "weapon_roll_degrees": -0.30129390142309553
+    },
+    {
+      "case": "aim",
+      "visual": "UE4_Mannequin",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.877382328352255,
+      "weapon_roll_degrees": 3.688096825694614
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "UE4_Mannequin"
+    },
+    {
+      "case": "widget_select",
+      "visual": "MayaCross",
+      "mesh": "Manny"
+    },
+    {
+      "case": "aim",
+      "visual": "MayaCross",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.662699511260087,
+      "weapon_roll_degrees": -0.7397154725409343
+    },
+    {
+      "case": "aim",
+      "visual": "MayaCross",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.064543132071032,
+      "weapon_roll_degrees": 0.073350824073757
+    },
+    {
+      "case": "aim",
+      "visual": "MayaCross",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.302309688742489,
+      "weapon_roll_degrees": -3.4406318252140533
+    },
+    {
+      "case": "aim",
+      "visual": "MayaCross",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.837938249001627,
+      "weapon_roll_degrees": 0.21281939803662114
+    },
+    {
+      "case": "aim",
+      "visual": "MayaCross",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 2.911174705908245,
+      "weapon_roll_degrees": -0.10266529990058641
+    },
+    {
+      "case": "aim",
+      "visual": "MayaCross",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 5.100320901414626,
+      "weapon_roll_degrees": 3.658934747350495
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "MayaCross"
+    },
+    {
+      "case": "widget_select",
+      "visual": "MudboundSurvivor",
+      "mesh": "Manny"
+    },
+    {
+      "case": "aim",
+      "visual": "MudboundSurvivor",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.456220997198816,
+      "weapon_roll_degrees": -0.38996511134175904
+    },
+    {
+      "case": "aim",
+      "visual": "MudboundSurvivor",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.038698943849614,
+      "weapon_roll_degrees": 0.015940103384974265
+    },
+    {
+      "case": "aim",
+      "visual": "MudboundSurvivor",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.365860312308434,
+      "weapon_roll_degrees": -3.470986295729224
+    },
+    {
+      "case": "aim",
+      "visual": "MudboundSurvivor",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.512945777237169,
+      "weapon_roll_degrees": 0.5357191061566979
+    },
+    {
+      "case": "aim",
+      "visual": "MudboundSurvivor",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 2.735755884219194,
+      "weapon_roll_degrees": 0.24378853536471662
+    },
+    {
+      "case": "aim",
+      "visual": "MudboundSurvivor",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.996848453368926,
+      "weapon_roll_degrees": 3.6498896875719082
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "MudboundSurvivor"
+    },
+    {
+      "case": "widget_select",
+      "visual": "WastelandHero",
+      "mesh": "Manny"
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandHero",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.627586102118234,
+      "weapon_roll_degrees": -0.6275719370287168
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandHero",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.2388381282431866,
+      "weapon_roll_degrees": 0.009128846491598544
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandHero",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.464766224658358,
+      "weapon_roll_degrees": -3.2808785464412114
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandHero",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.296287806668726,
+      "weapon_roll_degrees": 0.7916171155918632
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandHero",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.0283264672366355,
+      "weapon_roll_degrees": 0.17963578001240138
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandHero",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.691801438649884,
+      "weapon_roll_degrees": 3.6114502425142483
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "WastelandHero"
+    },
+    {
+      "case": "widget_select",
+      "visual": "WastelandSentinel",
+      "mesh": "Manny"
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandSentinel",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.8348159124414645,
+      "weapon_roll_degrees": -1.0435827544955627
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandSentinel",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.4271314000602273,
+      "weapon_roll_degrees": 0.6197587663914598
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandSentinel",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.387910235998586,
+      "weapon_roll_degrees": -2.972418134430509
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandSentinel",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.367435741784861,
+      "weapon_roll_degrees": 1.0402051674980302
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandSentinel",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.4328020900439675,
+      "weapon_roll_degrees": -0.3042605757452541
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandSentinel",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.432125829092545,
+      "weapon_roll_degrees": 3.4380017402952223
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "WastelandSentinel"
+    },
+    {
+      "case": "widget_select",
+      "visual": "WastelandVanguard",
+      "mesh": "Manny"
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandVanguard",
+      "left": false,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.786785051690096,
+      "weapon_roll_degrees": -1.22675927079343
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandVanguard",
+      "left": false,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.395640243883335,
+      "weapon_roll_degrees": 0.7717960113313329
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandVanguard",
+      "left": false,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.0824817079225975,
+      "weapon_roll_degrees": -3.105823354172239
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandVanguard",
+      "left": true,
+      "pitch": 0.0,
+      "muzzle_error_degrees": 5.415892326577985,
+      "weapon_roll_degrees": 1.078159424373856
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandVanguard",
+      "left": true,
+      "pitch": 40.0,
+      "muzzle_error_degrees": 3.2651489996891274,
+      "weapon_roll_degrees": -0.07140130572679676
+    },
+    {
+      "case": "aim",
+      "visual": "WastelandVanguard",
+      "left": true,
+      "pitch": -40.0,
+      "muzzle_error_degrees": 4.319879305189822,
+      "weapon_roll_degrees": 3.3627357298939287
+    },
+    {
+      "case": "fire_reload_and_clear",
+      "visual": "WastelandVanguard"
+    }
+  ]
+}

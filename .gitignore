@@ -37,6 +37,7 @@ Desktop.ini
 *.bak
 *.blend1
 *.blend2
+*.fbm/
 
 # Local credentials and environment overrides
 .env

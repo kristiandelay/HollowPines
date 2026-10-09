@@ -1,0 +1,38 @@
+{
+  "name": "MayaCross",
+  "original_archive_name": "Meshy_AI_Maya_Cross_1009030616_texture_fbx.zip",
+  "archive_path": "Mockups/Players/MayaCross.zip",
+  "archive_sha256": "40b752038cadd4ba9be8a44fc2c603c5d552dd12b4f9e40e981288c009f08a03",
+  "files": [
+    {
+      "original": "Meshy_AI_Maya_Cross_1009030616_texture_fbx/Meshy_AI_Maya_Cross_1009030616_texture.fbx",
+      "file": "MayaCross.fbx",
+      "bytes": 71959948,
+      "sha256": "228363010f370dce7228377986f5ed1417fb129fd1c1f6f3b4ba93c25b391f72"
+    },
+    {
+      "original": "Meshy_AI_Maya_Cross_1009030616_texture_fbx/Meshy_AI_Maya_Cross_1009030616_texture.png",
+      "file": "MayaCross_BaseColor.png",
+      "bytes": 6434540,
+      "sha256": "7f5926e89b4ffc66ed5722fb1d7a653eefb42459c794baf15241945034ae039c"
+    },
+    {
+      "original": "Meshy_AI_Maya_Cross_1009030616_texture_fbx/Meshy_AI_Maya_Cross_1009030616_texture_metallic.png",
+      "file": "MayaCross_Metallic.png",
+      "bytes": 26258,
+      "sha256": "e3216c60ad064e3406d7ef31b26acdb25f9d8f6276cf2d02967791ebd3888bb5"
+    },
+    {
+      "original": "Meshy_AI_Maya_Cross_1009030616_texture_fbx/Meshy_AI_Maya_Cross_1009030616_texture_normal.png",
+      "file": "MayaCross_Normal.png",
+      "bytes": 5345057,
+      "sha256": "250689e2642623b9d8c09b4471db9d2a616d142c30f128811255ae4192bdb80a"
+    },
+    {
+      "original": "Meshy_AI_Maya_Cross_1009030616_texture_fbx/Meshy_AI_Maya_Cross_1009030616_texture_roughness.png",
+      "file": "MayaCross_Roughness.png",
+      "bytes": 1509616,
+      "sha256": "c1cf5c6a9dfe90d2efecc43eaee5030934ce4e74661690c6ee92c5bc38f16758"
+    }
+  ]
+}
