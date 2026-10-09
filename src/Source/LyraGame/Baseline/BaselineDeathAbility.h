@@ -8,6 +8,8 @@ UCLASS()
 class UBaselineDeathAbility : public ULyraGameplayAbility_Death
 {
     GENERATED_BODY()
+public:
+    UBaselineDeathAbility(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 protected:
     virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo,
         const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;

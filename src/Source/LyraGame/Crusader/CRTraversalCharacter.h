@@ -43,6 +43,8 @@ protected:
     FTransform InitialSpawnTransform;
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Crusader")
     TObjectPtr<ULyraHeroComponent> HeroComponent;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Hollow Pines")
+    TObjectPtr<class UHollowPinesPlayerGore> PlayerGore;
     UFUNCTION() void OnSlideChanged(bool bSliding);
     UPROPERTY(Transient) TObjectPtr<UAnimMontage> SlideMontage;
 };

@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "error": null,
+  "results": [
+    {
+      "case": "camp_grounding",
+      "views": [
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 5114.600059461727
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "z_cm": 5114.600082349911
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "z_cm": 5114.6
+        },
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 5114.6
+        }
+      ]
+    },
+    {
+      "case": "cave_grounding",
+      "views": [
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 4855.131468584042
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "z_cm": 4911.133197101889
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "z_cm": 4855.13
+        },
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 4911.133197101889
+        }
+      ]
+    },
+    {
+      "case": "cave_airborne_returns_to_walking"
+    },
+    {
+      "case": "bridge_grounding",
+      "views": [
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 3858.145545523347
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "z_cm": 3858.145487246556
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "z_cm": 3858.15
+        },
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "z_cm": 3858.145487246556
+        }
+      ]
+    },
+    {
+      "case": "all_encounters_remain_passive",
+      "count": 4
+    }
+  ]
+}

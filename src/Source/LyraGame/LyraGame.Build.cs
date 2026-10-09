@@ -33,6 +33,7 @@ public class LyraGame : ModuleRules
 				"GameplayTasks",
 				"GameplayAbilities",
 				"AIModule",
+				"NavigationSystem",
 				"ModularGameplay",
 				"ModularGameplayActors",
 				"DataRegistry",
@@ -42,6 +43,7 @@ public class LyraGame : ModuleRules
 				"Hotfix",
 				"CommonLoadingScreen",
 				"Niagara",
+				"ProceduralMeshComponent",
 				"AsyncMixin",
 				"ControlFlows",
 				"PropertyPath"

@@ -5,13 +5,15 @@ import sys
 import time
 import uuid
 
+sys.stdout.reconfigure(encoding='utf-8')
+
 root = Path(__file__).resolve().parents[1] / 'Artifacts/EditorBridge'
 code = Path(sys.argv[1]).read_text(encoding='utf-8-sig') if len(sys.argv) > 1 else sys.stdin.read()
 identifier = uuid.uuid4().hex
 temporary = root / 'request.tmp'
 temporary.write_text(json.dumps({'id': identifier, 'code': code}), encoding='utf-8')
 temporary.replace(root / 'request.json')
-deadline = time.monotonic() + 120
+deadline = time.monotonic() + 600
 while time.monotonic() < deadline:
     try:
         response = json.loads((root / 'response.json').read_text())

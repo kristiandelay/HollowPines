@@ -1,0 +1,26 @@
+[
+  {
+    "name": "CaveStalker",
+    "clips": 13,
+    "blueprint": "/Game/HollowPines/Monsters/CaveStalker/BP_NPC_CaveStalker.BP_NPC_CaveStalker",
+    "player_attacks_enabled": false
+  },
+  {
+    "name": "HollowStalker",
+    "clips": 13,
+    "blueprint": "/Game/HollowPines/Monsters/HollowStalker/BP_NPC_HollowStalker.BP_NPC_HollowStalker",
+    "player_attacks_enabled": false
+  },
+  {
+    "name": "HollowRootRevenant",
+    "clips": 13,
+    "blueprint": "/Game/HollowPines/Monsters/HollowRootRevenant/BP_NPC_HollowRootRevenant.BP_NPC_HollowRootRevenant",
+    "player_attacks_enabled": false
+  },
+  {
+    "name": "Hag",
+    "clips": 13,
+    "blueprint": "/Game/HollowPines/Monsters/Hag/BP_NPC_Hag.BP_NPC_Hag",
+    "player_attacks_enabled": false
+  }
+]

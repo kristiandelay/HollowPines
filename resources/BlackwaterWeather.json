@@ -1,0 +1,16 @@
+{
+  "blueprint": "/Game/HollowPines/Environment/Weather/BP_HollowPinesSky",
+  "start_hour": 16.5,
+  "full_cycle_minutes": 30,
+  "weather_interval_seconds": [
+    180,
+    420
+  ],
+  "weather_blend_seconds": [
+    30,
+    90
+  ],
+  "source": "EasySky V2 2.5",
+  "replicated": true,
+  "rain_occlusion": "Dynamic scene-depth capture"
+}

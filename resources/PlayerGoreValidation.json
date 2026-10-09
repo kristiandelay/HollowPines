@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "error": null,
+  "results": [
+    {
+      "case": "real_gas_damage_paints_independent_replicated_wounds",
+      "views": [
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "world": "L_MonsterAnimationGym",
+          "painted_pixels": 104,
+          "target": "/Game/HollowPines/Maps/UEDPIE_0_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_0.TextureRenderTarget2D_0"
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "world": "L_MonsterAnimationGym",
+          "painted_pixels": 110,
+          "target": "/Game/HollowPines/Maps/UEDPIE_0_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_1.TextureRenderTarget2D_0"
+        },
+        {
+          "player": "B_CRTraversalPawn_C_1",
+          "world": "L_MonsterAnimationGym",
+          "painted_pixels": 1740,
+          "target": "/Game/HollowPines/Maps/UEDPIE_1_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_1.TextureRenderTarget2D_0"
+        },
+        {
+          "player": "B_CRTraversalPawn_C_0",
+          "world": "L_MonsterAnimationGym",
+          "painted_pixels": 1623,
+          "target": "/Game/HollowPines/Maps/UEDPIE_1_L_MonsterAnimationGym.L_MonsterAnimationGym:PersistentLevel.BP_PlayerGorePainter_C_0.TextureRenderTarget2D_0"
+        }
+      ]
+    },
+    {
+      "case": "nonimpact_damage_does_not_invent_wounds"
+    },
+    {
+      "case": "nonfatal_slash_paints_slice_without_severing"
+    },
+    {
+      "case": "torso_remains_intact_and_random_organs_drop",
+      "counts": [
+        13,
+        14,
+        13,
+        14
+      ],
+      "drop_chance_forced_for_test": true
+    },
+    {
+      "case": "replicated_limb_cut_keeps_torso_visible",
+      "views": 4
+    },
+    {
+      "case": "respawn_restores_clean_complete_character",
+      "views": 4,
+      "round": 1
+    },
+    {
+      "case": "respawn_restores_clean_complete_character",
+      "views": 4,
+      "round": 2
+    },
+    {
+      "case": "respawn_restores_clean_complete_character",
+      "views": 4,
+      "round": 3
+    }
+  ]
+}

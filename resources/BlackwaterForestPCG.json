@@ -1,0 +1,43 @@
+{
+  "seed": 731905,
+  "graph": "/Game/HollowPines/Environment/PCG/PCG_BlackwaterForest.PCG_BlackwaterForest",
+  "layers": [
+    {
+      "layer": "Redwood",
+      "points": 2520,
+      "meshes": [
+        "/Game/Redwood/Models/Trees/SM_Redwood_Large_01",
+        "/Game/Redwood/Models/Trees/SM_Redwood_Large_02",
+        "/Game/Redwood/Models/Trees/SM_Redwood_Large_03",
+        "/Game/Redwood/Models/Trees/SM_Redwood_Medium_01",
+        "/Game/Redwood/Models/Trees/SM_Redwood_Medium_02",
+        "/Game/Redwood/Models/Trees/SM_Redwood_Small_01",
+        "/Game/Redwood/Models/Trees/SM_Redwood_Small_02"
+      ],
+      "collision": true
+    },
+    {
+      "layer": "Ferns",
+      "points": 22142,
+      "meshes": [
+        "/Game/Redwood/Models/Plants/SM_Fern_01_A",
+        "/Game/Redwood/Models/Plants/SM_Fern_02_A",
+        "/Game/Redwood/Models/Plants/SM_Fern_03_A",
+        "/Game/Redwood/Models/Plants/SM_Fern_05_A",
+        "/Game/Redwood/Models/Plants/SM_Fern_06_A"
+      ],
+      "collision": false
+    },
+    {
+      "layer": "Forest Floor",
+      "points": 10454,
+      "meshes": [
+        "/Game/Redwood/Models/Plants/SM_Grass_01",
+        "/Game/Redwood/Models/Plants/SM_Grass_02",
+        "/Game/Redwood/Models/Debris/SM_Debris_01",
+        "/Game/Redwood/Models/Debris/SM_Debris_04"
+      ],
+      "collision": false
+    }
+  ]
+}

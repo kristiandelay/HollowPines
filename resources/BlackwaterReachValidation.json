@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "case": "baked_terrain_sections_have_collision",
+      "count": 66
+    },
+    {
+      "case": "pcg_output_persists_after_reload",
+      "redwoods": 2520,
+      "instances_by_mesh": {
+        "SM_FlagSpline": 765,
+        "SM_Debris_01": 2604,
+        "SM_Debris_04": 2633,
+        "SM_Fern_01_A": 4362,
+        "SM_Fern_02_A": 4520,
+        "SM_Fern_03_A": 4356,
+        "SM_Fern_05_A": 4435,
+        "SM_Fern_06_A": 4468,
+        "SM_Grass_01": 2662,
+        "SM_Grass_02": 2555,
+        "SM_Redwood_Large_01": 366,
+        "SM_Redwood_Large_02": 358,
+        "SM_Redwood_Large_03": 341,
+        "SM_Redwood_Medium_01": 368,
+        "SM_Redwood_Medium_02": 364,
+        "SM_Redwood_Small_01": 351,
+        "SM_Redwood_Small_02": 372,
+        "SM_GrassPatch_02_01": 171,
+        "SM_GrassPatch_02_01_HLOD": 171,
+        "SM_GrassPatch_02_02": 187,
+        "SM_GrassPatch_02_02_HLOD": 187,
+        "SM_GrassPatch_02_03": 203,
+        "SM_GrassPatch_02_03_HLOD": 203,
+        "SM_GrassPatch_02_04": 187,
+        "SM_GrassPatch_02_04_HLOD": 187,
+        "SM_GrassPatch_02_05": 194,
+        "SM_GrassPatch_02_05_HLOD": 194,
+        "SM_GrassPatch_02_06": 198,
+        "SM_GrassPatch_02_06_HLOD": 198,
+        "SM_Reeds_01_01": 1,
+        "SM_Reeds_01_01_HLOD": 1,
+        "SM_Reeds_01_02": 4,
+        "SM_Reeds_01_02_HLOD": 4,
+        "SM_Reeds_01_03": 8,
+        "SM_Reeds_01_03_HLOD": 8,
+        "SM_Reeds_01_04": 6,
+        "SM_Reeds_01_04_HLOD": 6,
+        "SM_Reeds_01_13": 6,
+        "SM_Reeds_01_12": 2,
+        "SM_Reeds_01_13_HLOD": 6,
+        "SM_Reeds_02_02": 15,
+        "SM_Reeds_02_02_HLOD": 15,
+        "SM_Reeds_02_03": 15,
+        "SM_Reeds_02_03_HLOD": 15,
+        "SM_Reeds_02_04": 26,
+        "SM_Reeds_02_04_HLOD": 26,
+        "SM_Reeds_02_07": 7,
+        "SM_Reeds_02_07_HLOD": 7,
+        "SM_Reeds_02_08": 16,
+        "SM_Reeds_02_08_HLOD": 16,
+        "SM_Reeds_03_01": 1,
+        "SM_Reeds_03_01_HLOD": 1,
+        "SM_Reeds_03_02": 4,
+        "SM_Reeds_03_02_HLOD": 4,
+        "SM_Reeds_03_03": 4,
+        "SM_Reeds_03_03_HLOD": 4,
+        "SM_Reeds_04_01": 32,
+        "SM_Reeds_04_02": 14,
+        "SM_Reeds_05_01": 12,
+        "SM_Reeds_05_02": 18,
+        "SM_Reeds_06_01": 13,
+        "SM_Reeds_06_01_HLOD": 13,
+        "SM_ReedsPlane": 1935,
+        "SM_Snag_02": 3,
+        "SM_WaterLily_01": 28,
+        "SM_WaterLily_02": 111,
+        "SM_WaterLily_03": 30,
+        "SM_WaterLily_04": 69,
+        "SM_WaterLily_05": 78,
+        "SM_WaterLily_06": 96,
+        "SM_WaterLily_07": 37,
+        "SM_WaterLily_08": 94,
+        "SM_WaterPlane": 1935,
+        "SM_WaterTrash_01": 51,
+        "SM_WaterTrash_02": 23,
+        "SM_WaterTrash_03": 91,
+        "SM_WaterTrash_04": 87,
+        "SM_Reeds_01_08": 1,
+        "SM_Reeds_01_10": 1,
+        "SM_Reeds_02_01": 2,
+        "SM_Reeds_02_01_HLOD": 2,
+        "SM_Snag_12": 4,
+        "SM_Snag_03": 3
+      }
+    },
+    {
+      "case": "four_passive_creature_encounters",
+      "actors": [
+        "Hag Passive Patrol",
+        "HollowRootRevenant Passive Patrol",
+        "HollowStalker Passive Patrol",
+        "CaveStalker Passive Patrol"
+      ]
+    },
+    {
+      "case": "landmark_ground_collision",
+      "locations": [
+        {
+          "name": "Start Camp",
+          "collision_z_m": 50.44996738433838,
+          "actor": "Campfire"
+        },
+        {
+          "name": "Abandoned Cabin",
+          "collision_z_m": 74.1847276687622,
+          "actor": "Play Mesh - Surface 02_05"
+        },
+        {
+          "name": "River Crossing",
+          "collision_z_m": 37.69996166229248,
+          "actor": "River Crossing Deck"
+        },
+        {
+          "name": "Radio Tower",
+          "collision_z_m": 42.555832862854004,
+          "actor": "Play Mesh - Surface 05_02"
+        },
+        {
+          "name": "Logging Site",
+          "collision_z_m": 67.1107530593872,
+          "actor": "Abandoned Sawmill"
+        },
+        {
+          "name": "Old Mine",
+          "collision_z_m": 86.52482032775879,
+          "actor": "Play Mesh - Mine - Cavern - Underground Lake - Swamp"
+        },
+        {
+          "name": "North Lake",
+          "collision_z_m": 60.286688804626465,
+          "actor": "North Lake Shelter"
+        },
+        {
+          "name": "Cliff Lookout",
+          "collision_z_m": 111.06874942779541,
+          "actor": "Play Mesh - Surface 06_06"
+        },
+        {
+          "name": "Swamp",
+          "collision_z_m": 18.000006675720215,
+          "actor": "Play Mesh - Surface 06_01"
+        },
+        {
+          "name": "South Exit",
+          "collision_z_m": 38.23263645172119,
+          "actor": "South Exit Shelter"
+        }
+      ]
+    },
+    {
+      "case": "underground_floor_and_overhead_collision",
+      "samples": [
+        {
+          "xy_m": [
+            325,
+            72
+          ],
+          "floor_z_m": 64.57481927762528,
+          "ceiling_z_m": 71.66666988621255
+        },
+        {
+          "xy_m": [
+            330,
+            18
+          ],
+          "floor_z_m": 47.57481927762528,
+          "ceiling_z_m": 62.96690909157296
+        },
+        {
+          "xy_m": [
+            310,
+            -90
+          ],
+          "floor_z_m": 15.274819414715964,
+          "ceiling_z_m": 34.209381620984274
+        },
+        {
+          "xy_m": [
+            365,
+            -175
+          ],
+          "floor_z_m": 11.851245107281937,
+          "ceiling_z_m": 19.060848327506317
+        }
+      ]
+    }
+  ]
+}

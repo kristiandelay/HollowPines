@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "error": null,
+  "results": [
+    {
+      "case": "passive_ai_moves_with_spacing",
+      "movement_cm": [
+        2114.237259210121,
+        2048.5774194779033,
+        1432.8313141399115,
+        1109.61614418454
+      ]
+    },
+    {
+      "case": "replicated_<HPMonsterAction.ATTACK1: 4>",
+      "views": 8
+    },
+    {
+      "case": "replicated_<HPMonsterAction.ATTACK2: 5>",
+      "views": 8
+    },
+    {
+      "case": "replicated_<HPMonsterAction.ATTACK3: 6>",
+      "views": 8
+    },
+    {
+      "case": "replicated_<HPMonsterAction.HIT_FRONT: 7>",
+      "views": 8
+    },
+    {
+      "case": "replicated_<HPMonsterAction.HIT_LEFT: 8>",
+      "views": 8
+    },
+    {
+      "case": "replicated_<HPMonsterAction.HIT_RIGHT: 9>",
+      "views": 8
+    },
+    {
+      "case": "jump_land_and_hag_hover",
+      "views": 8
+    },
+    {
+      "case": "fair_single_attacker_dummy_rehearsal",
+      "turns": {
+        "BP_NPC_CaveStalker_C_0": 1,
+        "BP_NPC_HollowStalker_C_0": 1,
+        "BP_NPC_HollowRootRevenant_C_0": 1,
+        "BP_NPC_Hag_C_0": 1
+      }
+    },
+    {
+      "case": "death_holds_final_pose_and_no_player_damage",
+      "views": 8
+    }
+  ]
+}

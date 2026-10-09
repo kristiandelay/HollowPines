@@ -2,6 +2,16 @@
 #include "TimerManager.h"
 #include "Engine/World.h"
 
+UBaselineDeathAbility::UBaselineDeathAbility(const FObjectInitializer& ObjectInitializer)
+    : Super(ObjectInitializer)
+{
+    // HealthComponent replicates death/ragdoll to every client. Only the server
+    // owns the three-second completion timer and pawn restart. A second remote
+    // activation is unnecessary and can leave the persistent ASC spec active.
+    NetExecutionPolicy = EGameplayAbilityNetExecutionPolicy::ServerOnly;
+    NetSecurityPolicy = EGameplayAbilityNetSecurityPolicy::ServerOnly;
+}
+
 void UBaselineDeathAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo,
     const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {

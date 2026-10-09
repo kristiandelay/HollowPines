@@ -1,9 +1,9 @@
-param([string]$EngineRoot = 'C:\Program Files\Epic Games\UE_5.8', [switch]$Automation)
+param([string]$EngineRoot = 'C:\Program Files\Epic Games\UE_5.8', [switch]$Automation, [string]$Map = '/Game/Maps/L_TraversalGym')
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = Split-Path $PSScriptRoot -Parent
 $ProjectFile = Join-Path $ProjectRoot 'src\HollowPines.uproject'
 $Editor = Join-Path $EngineRoot 'Engine\Binaries\Win64\UnrealEditor.exe'
-$EditorArgs = @('"' + $ProjectFile + '"', '/Game/Maps/L_TraversalGym', '-NoHotReload', '-Multiprocess')
+$EditorArgs = @('"' + $ProjectFile + '"', $Map, '-NoHotReload', '-Multiprocess')
 if ($Automation) {
     $BridgeFile = Join-Path $PSScriptRoot 'EditorBridge.py'
     $EditorArgs += '-ExecutePythonScript="' + $BridgeFile + '"'

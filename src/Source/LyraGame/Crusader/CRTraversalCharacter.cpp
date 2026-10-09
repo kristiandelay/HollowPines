@@ -19,6 +19,7 @@
 #include "AbilitySystem/LyraAbilitySystemComponent.h"
 #include "TimerManager.h"
 #include "HollowPines/HollowPinesPlayerState.h"
+#include "HollowPines/HollowPinesPlayerGore.h"
 
 ACRTraversalCharacter::ACRTraversalCharacter(const FObjectInitializer& ObjectInitializer)
     : Super(ObjectInitializer.SetDefaultSubobjectClass<UBaselineCharacterMovement>(ACharacter::CharacterMovementComponentName))
@@ -27,6 +28,7 @@ ACRTraversalCharacter::ACRTraversalCharacter(const FObjectInitializer& ObjectIni
     PrimaryActorTick.bStartWithTickEnabled = true;
     bUseControllerRotationYaw = false;
     HeroComponent = CreateDefaultSubobject<UCRTraversalHeroComponent>(TEXT("HeroComponent"));
+    PlayerGore = CreateDefaultSubobject<UHollowPinesPlayerGore>(TEXT("PlayerGore"));
     EquipmentManager = CreateDefaultSubobject<ULyraEquipmentManagerComponent>(TEXT("EquipmentManager"));
     BaselineEquipment = CreateDefaultSubobject<UBaselineEquipmentComponent>(TEXT("BaselineEquipment"));
     PhysicsControl = CreateDefaultSubobject<UPhysicsControlComponent>(TEXT("PhysicsControl"));

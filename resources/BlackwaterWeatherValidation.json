@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "error": null,
+  "results": [
+    {
+      "case": "clock_advances_and_stays_synchronized",
+      "clocks": [
+        16640.148061565564,
+        16629.065353396967
+      ]
+    },
+    {
+      "case": "rain_replicates_and_capture_contains_camp_roofs",
+      "captures": [
+        {
+          "terrain_sections": 6,
+          "shelters": [
+            "Camp Shelter 1",
+            "Camp Shelter 0",
+            "Camp Shelter 2"
+          ]
+        },
+        {
+          "terrain_sections": 6,
+          "shelters": [
+            "Camp Shelter 1",
+            "Camp Shelter 0",
+            "Camp Shelter 2"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "rain_blends_back_to_clear_on_both_clients"
+    },
+    {
+      "case": "night_lighting",
+      "sun_weights": [
+        -0.08169597387313843,
+        -0.08169597387313843
+      ]
+    },
+    {
+      "case": "day_lighting",
+      "sun_weights": [
+        1.0000011920928955,
+        1.0000011920928955
+      ]
+    }
+  ]
+}

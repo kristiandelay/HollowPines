@@ -1,0 +1,44 @@
+{
+  "profile": "/Game/HollowPines/Gore/DA_PlayerGore.DA_PlayerGore",
+  "players": [
+    {
+      "name": "MayaCross",
+      "mesh": "/Game/HollowPines/Players/MayaCross/MayaCross",
+      "material": "/Game/HollowPines/Gore/Materials/MI_MayaCross_Gore"
+    },
+    {
+      "name": "MudboundSurvivor",
+      "mesh": "/Game/HollowPines/Players/MudboundSurvivor/MudboundSurvivor",
+      "material": "/Game/HollowPines/Gore/Materials/MI_MudboundSurvivor_Gore"
+    },
+    {
+      "name": "WastelandHero",
+      "mesh": "/Game/HollowPines/Players/WastelandHero/WastelandHero",
+      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandHero_Gore"
+    },
+    {
+      "name": "WastelandSentinel",
+      "mesh": "/Game/HollowPines/Players/WastelandSentinel/WastelandSentinel",
+      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandSentinel_Gore"
+    },
+    {
+      "name": "WastelandVanguard",
+      "mesh": "/Game/HollowPines/Players/WastelandVanguard/WastelandVanguard",
+      "material": "/Game/HollowPines/Gore/Materials/MI_WastelandVanguard_Gore"
+    }
+  ],
+  "protected": [
+    "root",
+    "pelvis",
+    "spine",
+    "torso"
+  ],
+  "organs": [
+    "/Game/HollowPines/Gore/Organs/SM_heart.SM_heart",
+    "/Game/HollowPines/Gore/Organs/SM_liver.SM_liver",
+    "/Game/HollowPines/Gore/Organs/SM_kidneyL.SM_kidneyL",
+    "/Game/HollowPines/Gore/Organs/SM_stomach.SM_stomach"
+  ],
+  "wounds": "Replicated from Lyra damage hit context; slash tag HollowPines.Damage.Slash",
+  "cuts": "Fatal slashes only; allowed limb/head branches; protected torso remains intact"
+}

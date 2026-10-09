@@ -1,0 +1,85 @@
+{
+  "creature": "HollowRootRevenant",
+  "stage": "Animation blocking for review",
+  "fps": 30,
+  "clips": [
+    {
+      "name": "Idle",
+      "duration": 3.2,
+      "frames": 97,
+      "loop": true
+    },
+    {
+      "name": "Walk",
+      "duration": 1.8,
+      "frames": 55,
+      "loop": true
+    },
+    {
+      "name": "Run",
+      "duration": 1.1,
+      "frames": 34,
+      "loop": true
+    },
+    {
+      "name": "JumpStart",
+      "duration": 0.4,
+      "frames": 13,
+      "loop": false
+    },
+    {
+      "name": "JumpLoop",
+      "duration": 0.8,
+      "frames": 25,
+      "loop": true
+    },
+    {
+      "name": "Land",
+      "duration": 0.5333333333333333,
+      "frames": 17,
+      "loop": false
+    },
+    {
+      "name": "Attack1",
+      "duration": 1.4,
+      "frames": 43,
+      "loop": false
+    },
+    {
+      "name": "Attack2",
+      "duration": 1.6,
+      "frames": 49,
+      "loop": false
+    },
+    {
+      "name": "Attack3",
+      "duration": 2.0,
+      "frames": 61,
+      "loop": false
+    },
+    {
+      "name": "HitFront",
+      "duration": 0.7,
+      "frames": 22,
+      "loop": false
+    },
+    {
+      "name": "HitLeft",
+      "duration": 0.7,
+      "frames": 22,
+      "loop": false
+    },
+    {
+      "name": "HitRight",
+      "duration": 0.7,
+      "frames": 22,
+      "loop": false
+    },
+    {
+      "name": "Death",
+      "duration": 2.6,
+      "frames": 79,
+      "loop": false
+    }
+  ]
+}

@@ -470,6 +470,33 @@
     {
       "Name": "PhysicsControl",
       "Enabled": true
+    },
+    {
+      "Name": "PCG",
+      "Enabled": true
+    },
+    {
+      "Name": "PCGGeometryScriptInterop",
+      "Enabled": true
+    },
+    {
+      "Name": "MeshTerrainMode",
+      "Enabled": true,
+      "TargetAllowList": [
+        "Editor"
+      ]
+    },
+    {
+      "Name": "MeshPartition",
+      "Enabled": true
+    },
+    {
+      "Name": "EasySkyV2",
+      "Enabled": true
+    },
+    {
+      "Name": "ProceduralMeshComponent",
+      "Enabled": true
     }
   ],
   "EpicSampleNameHash": "451731683"

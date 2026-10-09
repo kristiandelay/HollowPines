@@ -54,6 +54,11 @@ public class LyraEditor : ModuleRules
 				"BlueprintGraph",
                 "AnimGraph",
                 "AnimGraphRuntime",
+                "NavigationSystem",
+                "GeometryCore",
+                "GeometryFramework",
+                "MeshPartition",
+                "MeshPartitionEditor",
                 "EnhancedInput",
                 "GameplayTags"
 			}
